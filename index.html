@@ -1,224 +1,885 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FINDORA — Find Your Perfect Place</title>
-<meta name="description" content="FINDORA is a premium real estate marketplace for renting and buying homes across Kochi, Kerala.">
+<title>العروبة سكوير | كمبوند العروبة مصر للتطوير العمراني</title>
+<meta name="description" content="العروبة سكوير — كمبوند سكني وتجاري متكامل من العروبة مصر للتطوير العمراني، يجمع بين التصميم الفاخر والمرافق العالمية والخصوصية التامة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23A8813C'/%3E%3Ctext x='12' y='17' font-size='13' fill='white' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700'%3Eع%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body data-page="home">
+<body>
 
-<header class="site-header header-transparent" id="siteHeader">
-  <div class="container header-inner">
-    <a href="index.html" class="logo">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 4l9 6.5"/><path d="M5 9.5V19a1 1 0 0 0 1 1h4v-5.5h4V20h4a1 1 0 0 0 1-1V9.5"/></svg>
-      FINDORA
+<!-- ============ الهيدر ============ -->
+<header class="site-header site-header--on-hero">
+  <div class="site-header__inner">
+    <a href="#top" class="site-header__logo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+      العروبة <span>سكوير</span>
     </a>
-    <nav class="nav-links">
-      <a href="index.html" data-nav="home" class="is-active">Home</a>
-      <a href="properties.html" data-nav="explore">Explore</a>
-      <a href="saved.html" data-nav="saved">Saved</a>
-      <a href="messages.html" data-nav="messages">Messages</a>
-      <a href="profile.html" data-nav="profile">Profile</a>
+    <nav class="site-header__nav" id="site-nav">
+      <a href="#about">من نحن</a>
+      <a href="units.html">استكشف الوحدات</a>
+      <a href="map.html">مخطط الموقع</a>
+      <a href="#lifestyle">أسلوب الحياة</a>
+      <a href="#testimonials">آراء العملاء</a>
+      <a href="#cta">تواصل معنا</a>
     </nav>
-    <div class="header-actions">
-      <button class="location-pill" id="locationPill"></button>
-      <button class="icon-btn" aria-label="Notifications" id="notifBtn"></button>
-      <a href="profile.html" class="avatar-btn"><img src="https://i.pravatar.cc/160?img=68" alt="John Doe"></a>
+    <div class="site-header__actions">
+      <span class="location-badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        القاهرة الجديدة
+      </span>
+      <a href="saved.html" class="header-icon-btn" aria-label="المحفوظات">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="fav-count-badge">٠</span>
+      </a>
     </div>
+    <button class="site-header__toggle" aria-label="فتح القائمة" aria-controls="site-nav">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
   </div>
 </header>
 
-<main>
+<main id="top">
+
+  <!-- ============ Hero ============ -->
   <section class="hero">
     <div class="hero-media">
-      <img id="heroBgImg" src="https://images.unsplash.com/photo-1722421492323-eaf9c401befe?auto=format&fit=crop&w=1800&q=80" alt="Modern house at dusk">
+      <img id="heroBgImg" src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80" alt="">
+      <div class="hero-media__overlay"></div>
     </div>
-    <div class="hero-inner container">
-      <span class="hero-tagline"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Find Your</span>
-      <h1>Perfect<br>Place</h1>
-      <p>Discover a place you'll love to live. Where comfort meets convenience, in every corner of Kochi.</p>
+    <div class="hero-inner">
+      <span class="hero-tagline">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+        اكتشف تجربة سكن استثنائية
+      </span>
+      <h1>منزل أحلامك<br>في العروبة سكوير</h1>
+      <p>استمتع بحياة تجمع بين الفخامة والراحة والاطمئنان، في قلب القاهرة الجديدة والتجمع الخامس.</p>
 
       <form class="hero-search" id="heroSearchForm">
         <div class="search-bar">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:#9A968B;flex:none"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input id="heroSearchInput" type="text" placeholder="Search by location, city or property">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="search-bar__icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input id="heroSearchInput" type="text" placeholder="ابحث بالاسم، البرج، أو الموقع...">
           <div class="divider"></div>
-          <button type="button" class="search-filter-btn" aria-label="Filters" onclick="window.location.href='properties.html'">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+          <button type="button" class="search-filter-btn" aria-label="كل الفلاتر" onclick="window.location.href='units.html'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
           </button>
-          <button type="submit" class="search-submit" aria-label="Search">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <button type="submit" class="search-submit" aria-label="بحث">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </button>
         </div>
-        <div class="chip-row hero-chips mt-4" data-toggle-group>
-          <button type="button" class="chip is-active" data-toggle-value="all">All</button>
-          <button type="button" class="chip" data-toggle-value="rent">Rent</button>
-          <button type="button" class="chip" data-toggle-value="buy">Buy</button>
-          <button type="button" class="chip" data-toggle-value="house">House</button>
-          <button type="button" class="chip" data-toggle-value="apartment">Apartment</button>
-          <button type="button" class="chip" data-toggle-value="rooms">Rooms</button>
+        <div class="chip-row hero-chips mt-4" id="heroChips">
+          <button type="button" class="chip is-active" data-chip="all">الكل</button>
+          <button type="button" class="chip" data-chip="sale">للبيع</button>
+          <button type="button" class="chip" data-chip="rent">للإيجار</button>
+          <button type="button" class="chip" data-chip="شقة سكنية">شقة سكنية</button>
+          <button type="button" class="chip" data-chip="بنتهاوس">بنتهاوس</button>
+          <button type="button" class="chip" data-chip="دوبلكس فاخر">دوبلكس فاخر</button>
         </div>
       </form>
     </div>
 
     <div class="hero-featured" id="heroFeaturedCard">
-      <span class="hf-badge">★ Featured Property</span>
-      <div class="hf-img"><img id="hfImg" src="https://images.unsplash.com/photo-1722421492323-eaf9c401befe?auto=format&fit=crop&w=900&q=80" alt="Featured property"></div>
-      <div class="flex justify-between items-center">
+      <span class="hf-badge">★ وحدة مميزة</span>
+      <div class="hf-img"><img id="hfImg" src="" alt=""></div>
+      <div class="hf-top">
         <div>
-          <h3 id="hfName">Brookside Haven</h3>
-          <div class="hf-loc" id="hfLoc"></div>
+          <h3 id="hfName">—</h3>
+          <div class="hf-loc" id="hfLoc"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span>—</span></div>
         </div>
-        <div class="hf-price" id="hfPrice"></div>
+        <div class="hf-price" id="hfPrice">—</div>
       </div>
       <div class="hf-stats">
-        <div class="hf-stat"><b id="hfBeds">3</b>Beds</div>
-        <div class="hf-stat"><b id="hfBaths">2</b>Baths</div>
-        <div class="hf-stat"><b id="hfArea">1200</b>sqft</div>
-        <div class="hf-stat"><b id="hfGarage">1</b>Garage</div>
+        <div class="hf-stat"><b id="hfBeds">—</b>غرف</div>
+        <div class="hf-stat"><b id="hfBaths">—</b>حمام</div>
+        <div class="hf-stat"><b id="hfArea">—</b>م²</div>
+        <div class="hf-stat"><b id="hfFloor">—</b>الطابق</div>
       </div>
       <div class="hf-actions">
-        <a href="#" id="hfContact" class="btn btn-secondary">Contact Agent</a>
-        <a href="#" id="hfSchedule" class="btn btn-primary">Schedule Visit</a>
+        <a href="#" id="hfContact" class="btn btn--outline">اتصل بالمستشار</a>
+        <a href="#" id="hfSchedule" class="btn btn--gold">حجز معاينة</a>
       </div>
     </div>
     <div class="hero-arrows">
-      <button type="button" id="heroPrev" aria-label="Previous featured property">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      <button type="button" id="heroPrev" aria-label="الوحدة المميزة السابقة">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
       </button>
-      <button type="button" id="heroNext" aria-label="Next featured property">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <button type="button" id="heroNext" aria-label="الوحدة المميزة التالية">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </button>
     </div>
   </section>
 
-  <section class="section">
+  <!-- ============ Browse by Category ============ -->
+  <section class="section section-tight">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Curated for you</span>
-          <h2 class="h2 mt-2">Best Offers</h2>
-        </div>
-        <a href="properties.html" class="see-all">See all
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      <div class="section-header" data-reveal="">
+        <span class="eyebrow">تصفح حسب النوع</span>
+        <h2 class="sec-title">عن أي نوع وحدة تبحث؟</h2>
+      </div>
+      <div class="category-grid">
+        <a href="units.html?type=%D8%B4%D9%82%D8%A9%20%D8%B3%D9%83%D9%86%D9%8A%D8%A9" class="category-card" data-reveal="">
+          <div class="category-card__media"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="شقة سكنية"></div>
+          <div class="category-card__body">
+            <h3>شقة سكنية</h3>
+            <span class="category-card__count" data-count-type="شقة سكنية">— وحدات</span>
+          </div>
+        </a>
+        <a href="units.html?type=%D9%88%D8%AD%D8%AF%D8%A9%20%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9%20%D8%B3%D9%83%D9%86%D9%8A%D8%A9" class="category-card" data-reveal="" data-reveal-delay="100">
+          <div class="category-card__media"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" alt="وحدة تجارية سكنية"></div>
+          <div class="category-card__body">
+            <h3>وحدة تجارية سكنية</h3>
+            <span class="category-card__count" data-count-type="وحدة تجارية سكنية">— وحدات</span>
+          </div>
+        </a>
+        <a href="units.html?type=%D9%88%D8%AD%D8%AF%D8%A9%20%D8%B0%D9%83%D9%8A%D8%A9" class="category-card" data-reveal="" data-reveal-delay="200">
+          <div class="category-card__media"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="وحدة ذكية"></div>
+          <div class="category-card__body">
+            <h3>وحدة ذكية</h3>
+            <span class="category-card__count" data-count-type="وحدة ذكية">— وحدات</span>
+          </div>
+        </a>
+        <a href="units.html?type=%D8%AF%D9%88%D8%A8%D9%84%D9%83%D8%B3%20%D9%81%D8%A7%D8%AE%D8%B1" class="category-card" data-reveal="" data-reveal-delay="300">
+          <div class="category-card__media"><img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=800&q=80" alt="دوبلكس فاخر"></div>
+          <div class="category-card__body">
+            <h3>دوبلكس فاخر</h3>
+            <span class="category-card__count" data-count-type="دوبلكس فاخر">— وحدات</span>
+          </div>
+        </a>
+        <a href="units.html?type=%D8%A8%D9%86%D8%AA%D9%87%D8%A7%D9%88%D8%B3" class="category-card" data-reveal="" data-reveal-delay="400">
+          <div class="category-card__media"><img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=800&q=80" alt="بنتهاوس"></div>
+          <div class="category-card__body">
+            <h3>بنتهاوس</h3>
+            <span class="category-card__count" data-count-type="بنتهاوس">— وحدات</span>
+          </div>
         </a>
       </div>
-      <div class="rail" id="bestOffersRail"></div>
+    </div>
+  </section>
+
+  <!-- ============ About ============ -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="about__intro">
+        <div class="about__content">
+          <span class="eyebrow" data-reveal="">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
+            أرقى معايير السكن والرفاهية
+          </span>
+          <h2 class="sec-title" data-reveal="">لماذا تختار الحياة في كومباوند؟</h2>
+          <p class="about__text" data-reveal="" data-reveal-delay="100">إن الكومباوند يوفر لك خدمات من الصعوبة أن تجدها بمكان آخر، فهناك ستجد التصميم المعماري الموحد الذي يراعي إبراز الجمال فيما حولك، وأيضاً ستجد المساحات المختلفة التي ستناسب احتياجاتك واحتياجات عائلتك من الراحة والهدوء التام وكل متطلبات الحياة العصرية.</p>
+          <div class="about__features">
+            <div class="about-feature" data-reveal="" data-reveal-delay="100">
+              <div>
+                <div class="about-feature__title">الشعور بالأمان وحرص خاص بذكاء</div>
+                <div class="about-feature__desc">أهم ما يميز الكومباوند بفضل المنظومة الذكية والحراسة الدائمة على مدار الساعة.</div>
+              </div>
+            </div>
+            <div class="about-feature" data-reveal="" data-reveal-delay="200">
+              <div>
+                <div class="about-feature__title">الأمان والبوابات الضخمة</div>
+                <div class="about-feature__desc">توفر الحماية المتكاملة لساكنيه مع بوابات دخول ذكية بنظام المراقبة والتتبع.</div>
+              </div>
+            </div>
+            <div class="about-feature" data-reveal="" data-reveal-delay="300">
+              <div>
+                <div class="about-feature__title">الهدوء والمساحات الخضراء</div>
+                <div class="about-feature__desc">لن تتوفر بالمدن التقليدية إلا في الكومباوند والمسطحات المائية الجميلة.</div>
+              </div>
+            </div>
+            <div class="about-feature" data-reveal="" data-reveal-delay="400">
+              <div>
+                <div class="about-feature__title">الخدمات التجارية والترفيهية المتكاملة</div>
+                <div class="about-feature__desc">مراكز تسوق ومطاعم ومقاهي وملاعب وكلها قريبة منك على بعد خطوات.</div>
+              </div>
+            </div>
+            <div class="about-feature" data-reveal="" data-reveal-delay="500">
+              <div>
+                <div class="about-feature__title">القرب من الأماكن الحيوية</div>
+                <div class="about-feature__desc">اختيار استراتيجي للمواقع بالقرب من المحاور الرئيسية والطرق لتسهيل حركتك.</div>
+              </div>
+            </div>
+            <div class="about-feature" data-reveal="" data-reveal-delay="500">
+              <div>
+                <div class="about-feature__title">الخصوصية والاستقلالية التامة</div>
+                <div class="about-feature__desc">بيئة سكنية خاصة تمنحك الخصوصية الكاملة بعيداً عن ضجيج المدن العشوائية.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="position:relative" data-reveal="right">
+          <div class="about__image">
+            <img src="assets/images/about_compound_1782532342234.jpg" alt="نمط الحياة في الكومباوند" data-fallback="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=900&q=80" loading="lazy">
+            <div class="about__image-overlay"></div>
+            <div class="about__image-caption">
+              <strong>تصميمات هندسية فريدة</strong>
+              <span>لاند سكيب ومسطحات مائية خلابة تحيط بك من كل مكان</span>
+            </div>
+          </div>
+          <div class="about__blob about__blob--1"></div>
+          <div class="about__blob about__blob--2"></div>
+        </div>
+      </div>
+
+      <div class="about__intro">
+        <div style="position:relative" data-reveal="left">
+          <div class="about__image">
+            <img src="assets/images/masterplan_1782532363193.jpg" alt="المخطط الرئيسي" data-fallback="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=900&q=80" loading="lazy">
+            <div class="about__image-overlay"></div>
+            <div class="about__image-caption">
+              <strong>المخطط الرئيسي المتكامل</strong>
+              <span>توزيع جغرافي ذكي للمرافق لسهولة الوصول من جميع الاتجاهات</span>
+            </div>
+          </div>
+          <div class="about__blob about__blob--1"></div>
+        </div>
+        <div class="about__content">
+          <span class="eyebrow" data-reveal="">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+            خبرة تمتد لأكثر من ٢٥ عاماً
+          </span>
+          <h2 class="sec-title" data-reveal="">لماذا شركة العروبة مصر؟</h2>
+          <p class="about__text" data-reveal="" data-reveal-delay="100">العروبة مصر للتطوير العمراني هي شركة رائدة في مجال التشييد والبناء وبناء الكومباوندات الفاخرة. نحرص دائماً على تطبيق أعلى معايير الجودة والأمان في جميع مشاريعنا، ملتزمين بمواعيد التسليم الدقيقة والخدمة المتميزة ما بعد البيع.</p>
+          <div class="about__vision" data-reveal="" data-reveal-delay="200">
+            <div class="about__vision-title">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+              رؤيتنا وقيمنا الراسخة
+            </div>
+            <p class="about__vision-text">نسعى جاهدين لصناعة مجتمعات ذكية متكاملة تجمع بين الحياة العائلية المستقرة، العمل الممتع والترفيه الراقي، متخذين من ثقة عملائنا دافعاً أساسياً للابتكار وتطوير أحدث الحلول السكنية المعاصرة.</p>
+          </div>
+          <div class="stats-row">
+            <div class="stat-card" data-reveal="" data-reveal-delay="200"><span class="stat-card__num" data-counter="25" data-suffix="+">0</span><span class="stat-card__label">عاماً من الخبرة</span></div>
+            <div class="stat-card" data-reveal="" data-reveal-delay="300"><span class="stat-card__num" data-counter="12" data-suffix="+">0</span><span class="stat-card__label">مشروعاً ناجحاً</span></div>
+            <div class="stat-card" data-reveal="" data-reveal-delay="400"><span class="stat-card__num" data-counter="5000" data-suffix="+">0</span><span class="stat-card__label">عائلة سعيدة</span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section-tight">
+  <!-- ============ Services ============ -->
+  <section class="section services" id="services">
     <div class="container">
-      <div class="trust-strip">
-        <div class="trust-item"><b>1,240+</b><span>Verified listings across Kerala</span></div>
-        <div class="trust-item"><b>4.7 / 5</b><span>Average tenant &amp; buyer rating</span></div>
-        <div class="trust-item"><b>&lt; 2 hrs</b><span>Average agent response time</span></div>
+      <div class="section-header" data-reveal="">
+        <h2 class="sec-title">خدماتنــا</h2>
+        <div class="sec-divider"></div>
+        <p class="sec-subtitle">نقدم لعملائنا من خلال سعينا الدائم والدؤوب لتقديم أفضل مستوى من الخدمات وبما يحقق تكامل لما نقدمه من حلول متكاملة ذكية تلبي جميع احتياجاتكم السكنية والتجارية والترفيهية.</p>
+      </div>
+      <div class="services__grid" id="services-grid">
+        <article class="svc-card" data-service="security" data-reveal="">
+          <div class="svc-card__image">
+            <img src="assets/images/services_security_1782532380373.jpg" alt="الأمن والحراسة" data-fallback="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80" loading="lazy">
+            <div class="svc-card__image-overlay"></div>
+          </div>
+          <div class="svc-card__body">
+            <h3 class="svc-card__title">الأمن والحراسة</h3>
+            <p class="svc-card__desc">منظومة أمنية متكاملة تعمل على مدار الساعة لضمان سلامة وأمن جميع ساكني الكومباوند.</p>
+            <button type="button" class="svc-card__more">
+              <span>قراءة المزيد</span>
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+          </div>
+        </article>
+        <article class="svc-card" data-service="commercial" data-reveal="" data-reveal-delay="100">
+          <div class="svc-card__image">
+            <img src="assets/images/services_commercial_1782532395035.jpg" alt="المنطقة التجارية" data-fallback="https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?auto=format&fit=crop&w=1200&q=80" loading="lazy">
+            <div class="svc-card__image-overlay"></div>
+          </div>
+          <div class="svc-card__body">
+            <h3 class="svc-card__title">المنطقة التجارية</h3>
+            <p class="svc-card__desc">منطقة تجارية راقية متكاملة تضم كبرى العلامات التجارية العالمية والمحلية على مساحة شاسعة.</p>
+            <button type="button" class="svc-card__more">
+              <span>قراءة المزيد</span>
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+          </div>
+        </article>
+        <article class="svc-card" data-service="mall" data-reveal="" data-reveal-delay="200">
+          <div class="svc-card__image">
+            <img src="assets/images/services_mall_1782532413315.jpg" alt="المول التجاري" data-fallback="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1200&q=80" loading="lazy">
+            <div class="svc-card__image-overlay"></div>
+          </div>
+          <div class="svc-card__body">
+            <h3 class="svc-card__title">المول التجاري</h3>
+            <p class="svc-card__desc">مول تجاري ضخم متعدد الطوابق يضم كارفور هايبرماركت وسينمات وألعاب وتسوق في مكان واحد.</p>
+            <button type="button" class="svc-card__more">
+              <span>قراءة المزيد</span>
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+          </div>
+        </article>
+        <article class="svc-card" data-service="pool" data-reveal="">
+          <div class="svc-card__image">
+            <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1200&q=80" alt="حمام السباحة والنادي المائي" data-fallback="https://images.unsplash.com/photo-1572331165267-854da2b10ccc?auto=format&fit=crop&w=1200&q=80" loading="lazy">
+            <div class="svc-card__image-overlay"></div>
+          </div>
+          <div class="svc-card__body">
+            <h3 class="svc-card__title">حمام السباحة والنادي المائي</h3>
+            <p class="svc-card__desc">حمام سباحة أولمبي ضخم مع نادٍ مائي متكامل مجهز بأعلى المعايير الدولية لتجربة استرخاء لا مثيل لها.</p>
+            <button type="button" class="svc-card__more">
+              <span>قراءة المزيد</span>
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+          </div>
+        </article>
+        <article class="svc-card" data-service="gym" data-reveal="" data-reveal-delay="100">
+          <div class="svc-card__image">
+            <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=600&q=80" alt="النادي الرياضي واللياقة البدنية" data-fallback="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80" loading="lazy">
+            <div class="svc-card__image-overlay"></div>
+          </div>
+          <div class="svc-card__body">
+            <h3 class="svc-card__title">النادي الرياضي واللياقة البدنية</h3>
+            <p class="svc-card__desc">نادٍ رياضي عالمي المستوى مجهز بأحدث معدات اللياقة البدنية والقاعات المتخصصة لتحقيق أهدافك الصحية.</p>
+            <button type="button" class="svc-card__more">
+              <span>قراءة المزيد</span>
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+          </div>
+        </article>
+        <article class="svc-card" data-service="maintenance" data-reveal="" data-reveal-delay="200">
+          <div class="svc-card__image">
+            <img src="assets/images/Services-Company.png" alt="خدمات الصيانة والإدارة" data-fallback="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1200&q=80" loading="lazy">
+            <div class="svc-card__image-overlay"></div>
+          </div>
+          <div class="svc-card__body">
+            <h3 class="svc-card__title">خدمات الصيانة والإدارة</h3>
+            <p class="svc-card__desc">فريق صيانة احترافي متكامل يعمل على مدار الساعة لضمان أعلى مستويات الراحة والجودة في حياتك اليومية.</p>
+            <button type="button" class="svc-card__more">
+              <span>قراءة المزيد</span>
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <!-- ============ Facilities ============ -->
+  <section class="section facilities" id="facilities">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Browse by category</span>
-          <h2 class="h2 mt-2">What are you looking for?</h2>
+      <div class="facilities__header" data-reveal="">
+        <span class="eyebrow">وسائل الراحة</span>
+        <h2 class="sec-title">المرافق ووسائل الراحة</h2>
+        <div class="sec-divider"></div>
+        <p class="sec-subtitle">نقدم لعملائنا من حلول ترفيهية وخدمية بمستوى عالمي لنبني مجتمعاً سكنياً وتجارياً مثالياً يوفر كل ما تحتاجه أسرتكم تحت سقف واحد.</p>
+        <div class="facilities__nav">
+          <button class="slider-btn" id="sl-r" aria-label="السابق"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg></button>
+          <button class="slider-btn" id="sl-l" aria-label="التالي"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg></button>
         </div>
       </div>
-      <div class="grid-cards" style="grid-template-columns:repeat(4,1fr)">
-        <a href="properties.html?type=House" class="card-property" style="text-decoration:none">
-          <div class="cp-media" style="aspect-ratio:5/4"><img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80" alt="Houses"></div>
-          <div class="cp-body"><h3>Houses</h3><span class="text-muted text-sm">4 listings</span></div>
-        </a>
-        <a href="properties.html?type=Apartment" class="card-property" style="text-decoration:none">
-          <div class="cp-media" style="aspect-ratio:5/4"><img src="https://images.unsplash.com/photo-1571236673892-13d222da2019?auto=format&fit=crop&w=800&q=80" alt="Apartments"></div>
-          <div class="cp-body"><h3>Apartments</h3><span class="text-muted text-sm">2 listings</span></div>
-        </a>
-        <a href="properties.html?type=Villa" class="card-property" style="text-decoration:none">
-          <div class="cp-media" style="aspect-ratio:5/4"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Villas"></div>
-          <div class="cp-body"><h3>Villas</h3><span class="text-muted text-sm">3 listings</span></div>
-        </a>
-        <a href="properties.html?type=Room" class="card-property" style="text-decoration:none">
-          <div class="cp-media" style="aspect-ratio:5/4"><img src="https://images.unsplash.com/photo-1706808849780-7a04fbac83ef?auto=format&fit=crop&w=800&q=80" alt="Rooms"></div>
-          <div class="cp-body"><h3>Rooms</h3><span class="text-muted text-sm">1 listing</span></div>
-        </a>
+      <div class="facilities__slider" id="facsl">
+        <div class="facility-card" data-reveal="">
+          <h3 class="facility-card__title">مصاعد كهربائية ذكية</h3>
+          <p class="facility-card__desc">مصاعد فاخرة من أرقى الماركات العالمية توفر سرعة وأمان تام مع أنظمة أوتوماتيكية متطورة للطوارئ والصيانة الذكية.</p>
+          <div class="facility-card__line"></div>
+        </div>
+        <div class="facility-card" data-reveal="" data-reveal-delay="100">
+          <h3 class="facility-card__title">منطقة ألعاب الأطفال</h3>
+          <p class="facility-card__desc">منطقة ترفيهية مغلقة ومفتوحة مراقبة بالكاميرات بالكامل، تحتوي على أحدث الألعاب الآمنة لأبنائكم في بيئة آمنة ومميزة.</p>
+          <div class="facility-card__line"></div>
+        </div>
+        <div class="facility-card" data-reveal="" data-reveal-delay="200">
+          <h3 class="facility-card__title">كارفور هايبر ماركت</h3>
+          <p class="facility-card__desc">فرع متكامل من هايبر ماركت كارفور لتوفير كافة احتياجات ومستلزمات أسرتك الغذائية والمنزلية اليومية بأسعار مميزة.</p>
+          <div class="facility-card__line"></div>
+        </div>
+        <div class="facility-card" data-reveal="" data-reveal-delay="300">
+          <h3 class="facility-card__title">مول تجاري متكامل</h3>
+          <p class="facility-card__desc">تجمع مذهل للمحلات التجارية والمطاعم والمقاهي، يمنحك تجربة تسوق فريدة دون مغادرة مجمع الكومباوند.</p>
+          <div class="facility-card__line"></div>
+        </div>
+        <div class="facility-card" data-reveal="">
+          <h3 class="facility-card__title">مناظر طبيعية ولاندسكيب</h3>
+          <p class="facility-card__desc">حدائق شاسعة ولاند سكيب بديع يحيط بكافة الوحدات مع مسارات مخصصة لممارسة الجري وركوب الدراجات.</p>
+          <div class="facility-card__line"></div>
+        </div>
+        <div class="facility-card" data-reveal="" data-reveal-delay="100">
+          <h3 class="facility-card__title">جراج سيارات تحت الأرض</h3>
+          <p class="facility-card__desc">جراجات واسعة ومؤمنة تحت الأرض مزودة بكاميرات مراقبة وبوابات دخول إلكترونية لتأمين سيارتك.</p>
+          <div class="facility-card__line"></div>
+        </div>
+        <div class="facility-card" data-reveal="" data-reveal-delay="200">
+          <h3 class="facility-card__title">نادي صحي ورياضي</h3>
+          <p class="facility-card__desc">نادٍ رياضي مجهز بأحدث الأجهزة الرياضية وصالات اللياقة البدنية ومسابح الكبار والصغار مع إشراف متخصصين.</p>
+          <div class="facility-card__line"></div>
+        </div>
+        <div class="facility-card" data-reveal="" data-reveal-delay="300">
+          <h3 class="facility-card__title">مدرسة دولية متميزة</h3>
+          <p class="facility-card__desc">مدرسة دولية متكاملة تعمل بأحدث المناهج التعليمية العالمية لتوفير مستقبل مشرق لأبنائكم الكرام.</p>
+          <div class="facility-card__line"></div>
+        </div>
+      </div>
+      <div class="facilities__mobile-nav">
+        <button class="slider-btn" id="sl-rm" aria-label="السابق"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg></button>
+        <span>اسحب للتصفح</span>
+        <button class="slider-btn" id="sl-lm" aria-label="التالي"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg></button>
       </div>
     </div>
   </section>
+
+  <!-- ============ Projects ============ -->
+  <section class="section section--bg" id="projects">
+    <div class="container">
+      <div class="section-header" data-reveal="">
+        <span class="eyebrow">مشاريعنا المميزة</span>
+        <h2 class="sec-title">مشاريع مختارة بعناية</h2>
+        <div class="sec-divider"></div>
+        <p class="sec-subtitle">مجموعة منتقاة من أبرز مشاريعنا العقارية التي تجسّد رؤيتنا في تقديم مجتمعات سكنية متكاملة بمعايير عالمية.</p>
+        <a href="units.html" class="btn btn--gold mt-4">
+          استكشف كل الوحدات المتاحة
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+        </a>
+      </div>
+      <div class="projects__grid">
+        <article class="project-card" data-reveal="">
+          <div class="project-card__image"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=80" alt="برج K السكني" loading="lazy"></div>
+          <div class="project-card__overlay"></div>
+          <span class="project-card__badge">متاح الآن</span>
+          <span class="project-card__badge project-card__badge--alt">برج سكني</span>
+          <a class="project-card__view" href="units.html?tower=K" aria-label="استكشف وحدات برج K"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg></a>
+          <div class="project-card__body">
+            <div class="project-card__type">كمباوند سكني</div>
+            <h3 class="project-card__title">برج K السكني</h3>
+            <p class="project-card__desc">برج سكني فاخر يطل على المساحات الخضراء الرئيسية والبحيرات الصناعية بمساحات تبدأ من ١٤٣ متر مربع.</p>
+            <div class="project-card__meta">
+              <span class="project-card__meta-item"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5"></path></svg> ٦ وحدات</span>
+              <span class="project-card__meta-item"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg> التجمع الخامس</span>
+            </div>
+          </div>
+        </article>
+        <article class="project-card" data-reveal="" data-reveal-delay="100">
+          <div class="project-card__image"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=900&q=80" alt="برج T التجاري السكني" loading="lazy"></div>
+          <div class="project-card__overlay"></div>
+          <span class="project-card__badge">مكتمل</span>
+          <span class="project-card__badge project-card__badge--alt">تجاري سكني</span>
+          <a class="project-card__view" href="units.html?tower=T" aria-label="استكشف وحدات برج T"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg></a>
+          <div class="project-card__body">
+            <div class="project-card__type">برج تجاري سكني</div>
+            <h3 class="project-card__title">برج T المتكامل</h3>
+            <p class="project-card__desc">برج سكني تجاري متكامل يطل مباشرة على المول التجاري والشارع الرئيسي بموقع استراتيجي فريد.</p>
+            <div class="project-card__meta">
+              <span class="project-card__meta-item"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5"></path></svg> ٣ وحدات</span>
+              <span class="project-card__meta-item"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg> القاهرة الجديدة</span>
+            </div>
+          </div>
+        </article>
+        <article class="project-card" data-reveal="" data-reveal-delay="200">
+          <div class="project-card__image"><img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=900&q=80" alt="برج Z النخبة" loading="lazy"></div>
+          <div class="project-card__overlay"></div>
+          <span class="project-card__badge">حصري</span>
+          <span class="project-card__badge project-card__badge--alt">بنتهاوس</span>
+          <a class="project-card__view" href="units.html?tower=Z" aria-label="استكشف وحدات برج Z"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg></a>
+          <div class="project-card__body">
+            <div class="project-card__type">بنتهاوس النخبة</div>
+            <h3 class="project-card__title">برج Z الفاخر</h3>
+            <p class="project-card__desc">برج النخبة الحصري بمساحات شاسعة وبنتهاوس فاخر بحمام سباحة خاص ومسبح وتراس بسطح المبنى بالكامل.</p>
+            <div class="project-card__meta">
+              <span class="project-card__meta-item"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5"></path></svg> وحدة واحدة</span>
+              <span class="project-card__meta-item"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg> النخبة</span>
+            </div>
+          </div>
+        </article>
+        <article class="project-card" data-reveal="" data-reveal-delay="100">
+          <div class="project-card__image"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=900&q=80" alt="برج N السكني" loading="lazy"></div>
+          <div class="project-card__overlay"></div>
+          <span class="project-card__badge">جديد</span>
+          <a class="project-card__view" href="units.html?tower=N" aria-label="استكشف وحدات برج N"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg></a>
+          <div class="project-card__body">
+            <div class="project-card__type">كمباوند فاخر</div>
+            <h3 class="project-card__title">برج N الفاخر</h3>
+            <p class="project-card__desc">برج سكني حديث بتصميم معماري فريد يطل على الحديقة المركزية بمساحات تبدأ من ١٦٥ م².</p>
+            <div class="project-card__meta"><span class="project-card__meta-item">١٢ وحدة</span><span class="project-card__meta-item">التجمع الخامس</span></div>
+          </div>
+        </article>
+        <article class="project-card" data-reveal="" data-reveal-delay="200">
+          <div class="project-card__image"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80" alt="برج S الذكي" loading="lazy"></div>
+          <div class="project-card__overlay"></div>
+          <span class="project-card__badge">متاح الآن</span>
+          <a class="project-card__view" href="units.html?tower=S" aria-label="استكشف وحدات برج S"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg></a>
+          <div class="project-card__body">
+            <div class="project-card__type">برج تجاري سكني</div>
+            <h3 class="project-card__title">برج S الذكي</h3>
+            <p class="project-card__desc">برج متعدد الاستخدامات بتقنيات المنزل الذكي مدمجة مع إطلالات بانورامية على المشروع.</p>
+            <div class="project-card__meta"><span class="project-card__meta-item">٨ وحدات</span><span class="project-card__meta-item">القاهرة الجديدة</span></div>
+          </div>
+        </article>
+        <article class="project-card" data-reveal="" data-reveal-delay="300">
+          <div class="project-card__image"><img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=900&q=80" alt="برج H النخبة" loading="lazy"></div>
+          <div class="project-card__overlay"></div>
+          <span class="project-card__badge">حصري</span>
+          <a class="project-card__view" href="units.html?tower=H" aria-label="استكشف وحدات برج H"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg></a>
+          <div class="project-card__body">
+            <div class="project-card__type">دوبلكس فاخر</div>
+            <h3 class="project-card__title">برج H النخبة</h3>
+            <p class="project-card__desc">دوبلكسات فاخرة بتصميم عصري فريد وتراسات خاصة مع خدمات كونسيرج حصرية لساكنيه.</p>
+            <div class="project-card__meta"><span class="project-card__meta-item">٤ وحدات</span><span class="project-card__meta-item">النخبة</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Masterplan ============ -->
+  <section class="masterplan" id="masterplan">
+    <div class="masterplan__bg-shapes" aria-hidden="true">
+      <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><circle cx="20" cy="20" r="30" fill="white"></circle><circle cx="80" cy="80" r="40" fill="white"></circle></svg>
+    </div>
+    <div class="container">
+      <div class="masterplan__inner">
+        <div class="masterplan__content" data-reveal="">
+          <span class="eyebrow eyebrow--gold">المخطط الرئيسي</span>
+          <h2 class="sec-title">مخطط متكامل ومدروس بعناية</h2>
+          <p class="sec-subtitle">توزيع جغرافي ذكي للمرافق والخدمات يضمن سهولة الوصول من جميع الاتجاهات مع الحفاظ على الخصوصية والهدوء.</p>
+          <div class="masterplan__features">
+            <div class="masterplan-feature" data-reveal="" data-reveal-delay="100">
+              <div class="masterplan-feature__title">المساحات الخضراء</div>
+              <div class="masterplan-feature__desc">٦٥٪ من إجمالي المساحة مخصصة للحدائق واللاندسكيب.</div>
+            </div>
+            <div class="masterplan-feature" data-reveal="" data-reveal-delay="200">
+              <div class="masterplan-feature__title">المرافق الخدمية</div>
+              <div class="masterplan-feature__desc">توزيع متوازن لمختلف المرافق على أطراف المخطط.</div>
+            </div>
+            <div class="masterplan-feature" data-reveal="" data-reveal-delay="300">
+              <div class="masterplan-feature__title">الشوارع والطرق</div>
+              <div class="masterplan-feature__desc">شبكة طرق داخلية واسعة بمسارات مخصصة للمشاة.</div>
+            </div>
+            <div class="masterplan-feature" data-reveal="" data-reveal-delay="400">
+              <div class="masterplan-feature__title">المواقف والجراجات</div>
+              <div class="masterplan-feature__desc">نظام متكامل من الجراجات تحت الأرض لكل وحدة.</div>
+            </div>
+          </div>
+        </div>
+        <div class="masterplan__viewer" data-reveal="right">
+          <div class="mp-toolbar" role="group" aria-label="أدوات التحكم في المخطط">
+            <button type="button" class="mp-btn" id="mp-zoom-in" aria-label="تكبير">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path stroke-linecap="round" d="M21 21l-4.35-4.35M11 8v6M8 11h6"></path></svg>
+            </button>
+            <button type="button" class="mp-btn" id="mp-zoom-out" aria-label="تصغير">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path stroke-linecap="round" d="M21 21l-4.35-4.35M8 11h6"></path></svg>
+            </button>
+            <button type="button" class="mp-btn" id="mp-reset" aria-label="إعادة الضبط">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5M4 9a9 9 0 0114.13-5.36M20 15a9 9 0 01-14.13 5.36"></path></svg>
+            </button>
+          </div>
+          <div class="mp-hint" id="mp-hint">اسحب للتحريك، أو استخدم عجلة الماوس للتكبير — اضغط على أي برج لعرض بياناته</div>
+          <div class="mp-frame" id="mp-frame">
+            <div class="mp-stage" id="mp-stage">
+              <img src="assets/images/masterplan_1782532363193.jpg" alt="المخطط الرئيسي للمشروع" data-fallback="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80" loading="lazy" draggable="false">
+              <div class="masterplan__hotspots" id="mp-hotspots">
+                <button class="hotspot hotspot--done" type="button" data-tower="building-k" style="top:22%;right:28%" aria-label="عرض بيانات برج K" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج K</div></button>
+                <button class="hotspot hotspot--done" type="button" data-tower="building-t" style="top:30%;right:72%" aria-label="عرض بيانات برج T" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج T</div></button>
+                <button class="hotspot hotspot--progress" type="button" data-tower="building-s" style="top:48%;right:50%" aria-label="عرض بيانات برج S" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج S</div></button>
+                <button class="hotspot hotspot--progress" type="button" data-tower="building-n" style="top:62%;right:22%" aria-label="عرض بيانات برج N" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج N</div></button>
+                <button class="hotspot hotspot--progress" type="button" data-tower="building-h" style="top:68%;right:78%" aria-label="عرض بيانات برج H" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج H</div></button>
+                <button class="hotspot hotspot--soon" type="button" data-tower="building-u" style="top:80%;right:45%" aria-label="عرض بيانات برج U" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج U</div></button>
+                <button class="hotspot hotspot--elite hotspot--soon" type="button" data-tower="building-z" style="top:14%;right:54%" aria-label="عرض بيانات برج Z" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج Z — بنتهاوس</div></button>
+              </div>
+            </div>
+          </div>
+          <div class="mp-legend">
+            <span><i class="mp-dot mp-dot--done"></i>مكتمل</span>
+            <span><i class="mp-dot mp-dot--prog"></i>قيد الإنشاء</span>
+            <span><i class="mp-dot mp-dot--soon"></i>قريباً</span>
+          </div>
+          <a href="map.html" class="btn btn--outline mt-4" style="color:#fff;border-color:rgba(255,255,255,.3)">
+            فتح الخريطة التفاعلية الكاملة
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Lifestyle ============ -->
+  <section class="section" id="lifestyle">
+    <div class="container">
+      <div class="section-header" data-reveal="">
+        <span class="eyebrow">أسلوب الحياة</span>
+        <h2 class="sec-title">نمط حياة فاخر</h2>
+        <div class="sec-divider"></div>
+        <p class="sec-subtitle">استمتع بتجربة معيشية استثنائية تجمع بين الفخامة والهدوء والمرافق العالمية.</p>
+      </div>
+      <div class="lifestyle__grid">
+        <div class="lifestyle-item" data-reveal="">
+          <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1200&q=80" alt="حمامات السباحة" loading="lazy">
+          <div class="lifestyle-item__overlay"><div class="lifestyle-item__title">حمامات السباحة</div></div>
+          <div class="lifestyle-item__icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l3-9 4 18 3-9h4"></path></svg></div>
+        </div>
+        <div class="lifestyle-item" data-reveal="" data-reveal-delay="100">
+          <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=600&q=80" alt="النادي الرياضي" loading="lazy">
+          <div class="lifestyle-item__overlay"><div class="lifestyle-item__title">النادي الرياضي</div></div>
+          <div class="lifestyle-item__icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path></svg></div>
+        </div>
+        <div class="lifestyle-item" data-reveal="" data-reveal-delay="200">
+          <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=600&q=80" alt="المساحات الخضراء" loading="lazy">
+          <div class="lifestyle-item__overlay"><div class="lifestyle-item__title">المساحات الخضراء</div></div>
+          <div class="lifestyle-item__icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg></div>
+        </div>
+        <div class="lifestyle-item" data-reveal="">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80" alt="المطاعم والمقاهي" loading="lazy">
+          <div class="lifestyle-item__overlay"><div class="lifestyle-item__title">المطاعم والمقاهي</div></div>
+          <div class="lifestyle-item__icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></div>
+        </div>
+        <div class="lifestyle-item" data-reveal="" data-reveal-delay="100">
+          <img src="assets/images/images.jpg" alt="منطقة ألعاب الأطفال" data-fallback="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=600&q=80" loading="lazy">
+          <div class="lifestyle-item__overlay"><div class="lifestyle-item__title">منطقة ألعاب الأطفال</div></div>
+          <div class="lifestyle-item__icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+        </div>
+        <div class="lifestyle-item" data-reveal="" data-reveal-delay="300">
+          <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=600&q=80" alt="الأمن والخصوصية" loading="lazy">
+          <div class="lifestyle-item__overlay"><div class="lifestyle-item__title">الأمن والخصوصية</div></div>
+          <div class="lifestyle-item__icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Testimonials ============ -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header" data-reveal="">
+        <span class="eyebrow eyebrow--gold">آراء عملائنا</span>
+        <h2 class="sec-title">ماذا يقول عملاؤنا؟</h2>
+        <div class="sec-divider"></div>
+        <p class="sec-subtitle">تجارب حقيقية من أصحاب الوحدات في العروبة سكوير — كلماتهم خير شاهد على جودتنا والتزامنا.</p>
+      </div>
+      <div class="testimonials__track-wrap" data-reveal="">
+        <div class="testimonials__track" id="testi-track">
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.293-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.293-3.996 5.849h3.983v10h-9.983z"></path></svg>
+            </div>
+            <p class="testimonial-card__text">تجربتنا في العروبة سكوير كانت استثنائية بكل المقاييس، من جودة التشطيب إلى اهتمام فريق العمل بأدق التفاصيل. أنصح كل من يبحث عن حياة الرفاهية بالاستثمار هنا.</p>
+            <div class="testimonial-card__author">
+              <div>
+                <div class="testimonial-card__name">أ.م أحمد محمود</div>
+                <div class="testimonial-card__role">مالك وحدة — برج K4</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.293-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.293-3.996 5.849h3.983v10h-9.983z"></path></svg>
+            </div>
+            <p class="testimonial-card__text">من أول يوم وطئت فيه قدمي العروبة سكوير أحسست إنني اتخذت القرار الصح. المرافق رائعة، الأمان ممتاز، والمجتمع السكني متعاون. قرار الشراء هنا كان من أذكى قراراتي.</p>
+            <div class="testimonial-card__author">
+              <div>
+                <div class="testimonial-card__name">م. سامي عبد العزيز</div>
+                <div class="testimonial-card__role">مالك وحدة — برج Z1</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.293-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.293-3.996 5.849h3.983v10h-9.983z"></path></svg>
+            </div>
+            <p class="testimonial-card__text">الخدمة ما بعد البيع في العروبة سكوير مختلفة تماماً عن أي مشروع آخر جربته. يتابعون معك في كل خطوة ويحلون أي مشكلة فوراً. شعور حقيقي بالاهتمام والاحترافية.</p>
+            <div class="testimonial-card__author">
+              <div>
+                <div class="testimonial-card__name">د. رانيا هاشم</div>
+                <div class="testimonial-card__role">مالكة وحدة — برج U1</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.293-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.293-3.996 5.849h3.983v10h-9.983z"></path></svg>
+            </div>
+            <p class="testimonial-card__text">استثمرت في العروبة سكوير منذ أربع سنوات وحتى اليوم قيمة العقار في ارتفاع مستمر. المشروع يجذب الإيجارات بأسعار ممتازة. هو فعلاً من أفضل قرارات الاستثمار العقاري في مصر.</p>
+            <div class="testimonial-card__author">
+              <div>
+                <div class="testimonial-card__name">أ. كريم طارق</div>
+                <div class="testimonial-card__role">مالك وحدة — برجا T1 و S2</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.293-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.293-3.996 5.849h3.983v10h-9.983z"></path></svg>
+            </div>
+            <p class="testimonial-card__text">أولادي كبروا في مجتمع آمن محاط بالخضرة والمرافق المتكاملة. المدرسة قريبة، النادي في البوابة، والأمن على مدار الساعة. العروبة سكوير ليست مجرد شقة — هي أسلوب حياة كامل.</p>
+            <div class="testimonial-card__author">
+              <div>
+                <div class="testimonial-card__name">أ. نادية إبراهيم</div>
+                <div class="testimonial-card__role">مالكة وحدة — برج H1</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.293-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.293-3.996 5.849h3.983v10h-9.983z"></path></svg>
+            </div>
+            <p class="testimonial-card__text">التسليم كان في الموعد المحدد تماماً وده نادر جداً في السوق المصري. التشطيب فاق توقعاتي — البورسلان والدهانات والتكييف المركزي كلها بجودة أولى. أنصح الجميع بالشراء هنا.</p>
+            <div class="testimonial-card__author">
+              <div>
+                <div class="testimonial-card__name">م. طارق مصطفى</div>
+                <div class="testimonial-card__role">مالك وحدة — برجا K1 و K3</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.293-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.293-3.996 5.849h3.983v10h-9.983z"></path></svg>
+            </div>
+            <p class="testimonial-card__text">فريق المبيعات كان محترم ومش بيضغط عليك. شرحوا كل شيء بشفافية من أول جلسة. ولما اشتريت كانت النتيجة أفضل من كل ما وصفوه. مشروع يعكس قيم شركة تحترم عميلها.</p>
+            <div class="testimonial-card__author">
+              <div>
+                <div class="testimonial-card__name">أ. لمياء حسين</div>
+                <div class="testimonial-card__role">مالكة وحدة — برج Z1</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.293-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.293-3.996 5.849h3.983v10h-9.983z"></path></svg>
+            </div>
+            <p class="testimonial-card__text">بعد مقارنة أكثر من مشروع سكني، اخترت العروبة سكوير بسبب الموقع المميز وجودة التنفيذ. حتى بعد الاستلام وجدت أن خدمات الصيانة وإدارة المشروع على أعلى مستوى، وهو ما منحني ثقة كبيرة في استثماري.</p>
+            <div class="testimonial-card__author">
+              <div>
+                <div class="testimonial-card__name">أ. محمد حسن</div>
+                <div class="testimonial-card__role">مالك وحدة — برج S2</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.293-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.293-3.996 5.849h3.983v10h-9.983z"></path></svg>
+            </div>
+            <p class="testimonial-card__text">أكثر ما أعجبني هو الاهتمام بالتفاصيل داخل الكمبوند؛ المساحات الخضراء، أماكن الجلوس، وتنظيم حركة السيارات. أشعر بالراحة والخصوصية في كل مرة أزور فيها المشروع.</p>
+            <div class="testimonial-card__author">
+              <div>
+                <div class="testimonial-card__name">أ. سارة رمضان</div>
+                <div class="testimonial-card__role">مالكة وحدة — برج S1</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.293-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.293-3.996 5.849h3.983v10h-9.983z"></path></svg>
+            </div>
+            <p class="testimonial-card__text">كنت أبحث عن استثمار طويل الأجل يجمع بين الموقع المميز والعائد القوي، والعروبة سكوير حقق المعادلة بالكامل. الإدارة محترفة، والخدمات متكاملة، والمشروع يزداد قيمة مع مرور الوقت.</p>
+            <div class="testimonial-card__author">
+              <div>
+                <div class="testimonial-card__name">د. عمر شريف</div>
+                <div class="testimonial-card__role">مالك وحدة — برج T2</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.293-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.293-3.996 5.849h3.983v10h-9.983z"></path></svg>
+            </div>
+            <p class="testimonial-card__text">منذ اليوم الأول شعرت أنني أتعامل مع شركة محترفة تهتم بكل التفاصيل. إجراءات الحجز والتعاقد كانت سهلة وواضحة، وتم الرد على جميع استفساراتي بسرعة. تجربة ممتازة أوصي بها لكل من يبحث عن سكن راقٍ.</p>
+            <div class="testimonial-card__author">
+              <div>
+                <div class="testimonial-card__name">أ. هيثم محمود</div>
+                <div class="testimonial-card__role">مالك وحدة — برجا K4 و K2</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__quote">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.293-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.293-3.996 5.849h3.983v10h-9.983z"></path></svg>
+            </div>
+            <p class="testimonial-card__text">ما يميز العروبة سكوير هو الجمع بين التصميم العصري والهدوء والخدمات المتكاملة في مكان واحد. بعد انتقالي للسكن أصبحت كل احتياجات أسرتي على بُعد دقائق، وهذا وفر علينا الكثير من الوقت والجهد.</p>
+            <div class="testimonial-card__author">
+              <div>
+                <div class="testimonial-card__name">أ. ياسمين فؤاد</div>
+                <div class="testimonial-card__role">مالكة وحدة — برج T1</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="testimonials__controls">
+        <div class="testimonials__nav">
+          <button class="slider-btn" id="testi-prev" aria-label="السابق"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg></button>
+          <div id="testi-dots" style="display:flex;gap:8px;align-items:center;"></div>
+          <button class="slider-btn" id="testi-next" aria-label="التالي"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-section" id="cta">
+    <div class="cta-section__bg" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=60" alt="" loading="lazy">
+    </div>
+    <div class="cta-section__inner">
+      <div class="cta-section__image" data-reveal="left">
+        <img src="assets/images/cta_person_1782532431683.jpg" alt="مستشار المبيعات" data-fallback="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" loading="lazy">
+      </div>
+      <div class="cta-section__content">
+        <span class="cta-section__eyebrow" data-reveal="">هل لديك أي استفسار عقاري؟</span>
+        <h2 class="cta-section__title" data-reveal="" data-reveal-delay="100">استفسر عن مشروع العروبة سكوير الآن</h2>
+        <p class="cta-section__lead" data-reveal="" data-reveal-delay="200">مستشارو العقارات لدينا متاحون على مدار الساعة للإجابة على استفساراتكم حول أنظمة الدفع والتقسيط ومساحات الوحدات المتاحة والمخططات والأسعار. تفضل بطلب تواصل مجاني وسنتصل بك فوراً.</p>
+        <div data-reveal="" data-reveal-delay="300">
+          <a href="schedule-visit.html" class="btn btn--light btn--lg">
+            استفسر الآن
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
+<!-- ============ الفوتر ============ -->
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <a href="index.html" class="logo" style="margin-bottom:14px;display:inline-flex">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 4l9 6.5"/><path d="M5 9.5V19a1 1 0 0 0 1 1h4v-5.5h4V20h4a1 1 0 0 0 1-1V9.5"/></svg>
-          FINDORA
-        </a>
-        <p class="text-muted text-sm" style="max-width:260px;line-height:1.7">A premium property marketplace helping you find, rent and buy homes across Kerala with confidence.</p>
-      </div>
-      <div>
-        <h5>Explore</h5>
-        <ul>
-          <li><a href="properties.html">All Properties</a></li>
-          <li><a href="properties.html?listing=rent">For Rent</a></li>
-          <li><a href="properties.html?listing=buy">For Sale</a></li>
-          <li><a href="map.html">Map View</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Account</h5>
-        <ul>
-          <li><a href="saved.html">Saved Properties</a></li>
-          <li><a href="messages.html">Messages</a></li>
-          <li><a href="profile.html">My Profile</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Company</h5>
-        <ul>
-          <li><a href="#" data-coming-soon>About Us</a></li>
-          <li><a href="#" data-coming-soon>Careers</a></li>
-          <li><a href="#" data-coming-soon>Contact</a></li>
-        </ul>
-      </div>
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <a href="#top" class="site-footer__logo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+        العروبة <span>سكوير</span>
+      </a>
+      <p class="site-footer__tagline">كمبوند سكني وتجاري فاخر من العروبة مصر للتطوير العمراني، يجمع بين الفخامة والراحة والاطمئنان في قلب القاهرة الجديدة.</p>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 FINDORA. All rights reserved.</span>
-      <span>Kochi, Kerala, India</span>
+    <div class="site-footer__col">
+      <h4>استكشف</h4>
+      <a href="units.html">كل الوحدات</a>
+      <a href="units.html?listing=sale">للبيع</a>
+      <a href="units.html?listing=rent">للإيجار</a>
+      <a href="map.html">خريطة الموقع</a>
     </div>
+    <div class="site-footer__col">
+      <h4>حسابي</h4>
+      <a href="saved.html">المحفوظات</a>
+      <a href="schedule-visit.html">حجز معاينة</a>
+    </div>
+    <div class="site-footer__col">
+      <h4>الشركة</h4>
+      <a href="#about">من نحن</a>
+      <a href="#services">خدماتنا</a>
+      <a href="#testimonials">آراء العملاء</a>
+      <a href="#cta">تواصل معنا</a>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <span>© <span id="year"></span> العروبة مصر للتطوير العمراني. جميع الحقوق محفوظة.</span>
+    <span>التجمع الخامس، القاهرة الجديدة</span>
   </div>
 </footer>
 
-<nav class="bottom-nav">
-  <a href="index.html" data-nav="home" class="is-active">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    Home
-  </a>
-  <a href="properties.html" data-nav="explore">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
-    Explore
-  </a>
-  <a href="saved.html" data-nav="saved">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-    Saved
-  </a>
-  <a href="messages.html" data-nav="messages">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-    Messages
-  </a>
-  <a href="profile.html" data-nav="profile">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    Profile
-  </a>
-</nav>
-
 <script src="js/main.js"></script>
-<script>
-  document.getElementById('locationPill').innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Kochi, Kerala';
-  document.getElementById('notifBtn').innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="dot"></span>';
-</script>
+<script src="js/platform.js"></script>
 </body>
 </html>

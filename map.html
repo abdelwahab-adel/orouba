@@ -1,74 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Map View — FINDORA</title>
+<title>مخطط الموقع التفاعلي | العروبة سكوير</title>
+<meta name="description" content="استكشف مخطط العروبة سكوير التفاعلي وتصفح الوحدات المتاحة في كل برج.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23A8813C'/%3E%3Ctext x='12' y='17' font-size='13' fill='white' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700'%3Eع%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 </head>
-<body data-page="explore">
+<body data-page="map">
 
-<header class="site-header" id="siteHeader">
-  <div class="container header-inner">
-    <a href="index.html" class="logo">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 4l9 6.5"/><path d="M5 9.5V19a1 1 0 0 0 1 1h4v-5.5h4V20h4a1 1 0 0 0 1-1V9.5"/></svg>
-      FINDORA
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="site-header__logo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+      العروبة <span>سكوير</span>
     </a>
-    <nav class="nav-links">
-      <a href="index.html" data-nav="home">Home</a>
-      <a href="properties.html" data-nav="explore">Explore</a>
-      <a href="saved.html" data-nav="saved">Saved</a>
-      <a href="messages.html" data-nav="messages">Messages</a>
-      <a href="profile.html" data-nav="profile">Profile</a>
+    <nav class="site-header__nav" id="site-nav">
+      <a href="index.html">الرئيسية</a>
+      <a href="index.html#about">من نحن</a>
+      <a href="units.html">استكشف الوحدات</a>
+      <a href="map.html">مخطط الموقع</a>
+      <a href="index.html#testimonials">آراء العملاء</a>
+      <a href="index.html#cta">تواصل معنا</a>
     </nav>
-    <div class="header-actions">
-      <button class="location-pill" id="locationPill"></button>
-      <button class="icon-btn" aria-label="Notifications" id="notifBtn"></button>
-      <a href="profile.html" class="avatar-btn"><img src="https://i.pravatar.cc/160?img=68" alt="John Doe"></a>
+    <div class="site-header__actions">
+      <a href="saved.html" class="header-icon-btn" aria-label="المحفوظات">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="fav-count-badge">٠</span>
+      </a>
     </div>
+    <button class="site-header__toggle" aria-label="فتح القائمة" aria-controls="site-nav">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
   </div>
 </header>
 
-<div class="map-page-wrap">
-  <aside class="map-sidebar">
-    <div class="map-sidebar-head">
-      <div class="breadcrumb" style="padding-top:0">
-        <a href="index.html">Home</a><span class="sep">/</span><span class="current">Map View</span>
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">الرئيسية</a> <span>/</span> <span aria-current="page">مخطط الموقع</span>
       </div>
-      <h1 class="h2 mt-3">Map View</h1>
-      <div class="search-bar mt-4" style="box-shadow:none;border:1px solid var(--line)">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color:#9A968B;flex:none"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input id="mapSearchInput" type="text" placeholder="Search by location, city or property">
-      </div>
+      <h1 class="page-hero__title">مخطط الموقع التفاعلي</h1>
+      <p class="page-hero__subtitle">اضغط على أي برج لعرض الوحدات المتاحة فيه، أو تصفح كل الوحدات من القائمة الجانبية — وفي الأسفل خريطة حقيقية بموقع المشروع على أرض الواقع.</p>
     </div>
-    <div class="map-list" id="mapList"></div>
-    <div class="empty-state" id="mapListEmpty" style="display:none;padding:40px 10px">
-      <div class="es-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-      <h3 class="h3">No matches</h3>
-      <p>Try a different location or property name.</p>
-    </div>
-  </aside>
+  </section>
 
-  <div class="map-relative">
-    <div id="leafletMap"></div>
-    <div class="map-floating-card" id="mapFloatingCard"></div>
+  <div class="map-page-layout">
+    <section class="masterplan">
+      <div class="masterplan__bg-shapes" aria-hidden="true">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><circle cx="20" cy="20" r="30" fill="white"></circle><circle cx="80" cy="80" r="40" fill="white"></circle></svg>
+      </div>
+      <div class="container">
+        <div class="masterplan__viewer" style="margin:0 auto;max-width:640px">
+          <div class="mp-toolbar" role="group" aria-label="أدوات التحكم في المخطط">
+            <button type="button" class="mp-btn" id="mp-zoom-in" aria-label="تكبير">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path stroke-linecap="round" d="M21 21l-4.35-4.35M11 8v6M8 11h6"></path></svg>
+            </button>
+            <button type="button" class="mp-btn" id="mp-zoom-out" aria-label="تصغير">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path stroke-linecap="round" d="M21 21l-4.35-4.35M8 11h6"></path></svg>
+            </button>
+            <button type="button" class="mp-btn" id="mp-reset" aria-label="إعادة الضبط">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5M4 9a9 9 0 0114.13-5.36M20 15a9 9 0 01-14.13 5.36"></path></svg>
+            </button>
+            <button type="button" class="mp-btn" id="mapShowAll" style="width:auto;padding:0 12px;font-size:12.5px" aria-label="عرض كل الوحدات">كل الوحدات</button>
+          </div>
+          <div class="mp-hint">اضغط على أي برج لعرض وحداته المتاحة في القائمة</div>
+          <div class="mp-frame" id="mp-frame">
+            <div class="mp-stage" id="mp-stage">
+              <img src="assets/images/masterplan_1782532363193.jpg" alt="المخطط الرئيسي للمشروع" data-fallback="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80" loading="lazy" draggable="false">
+              <div class="masterplan__hotspots" id="mp-hotspots">
+                <button class="hotspot hotspot--done" type="button" data-tower="building-k" data-tower-key="K" style="top:22%;right:28%" aria-label="عرض وحدات برج K" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج K</div></button>
+                <button class="hotspot hotspot--done" type="button" data-tower="building-t" data-tower-key="T" style="top:30%;right:72%" aria-label="عرض وحدات برج T" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج T</div></button>
+                <button class="hotspot hotspot--progress" type="button" data-tower="building-s" data-tower-key="S" style="top:48%;right:50%" aria-label="عرض وحدات برج S" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج S</div></button>
+                <button class="hotspot hotspot--progress" type="button" data-tower="building-n" data-tower-key="N" style="top:62%;right:22%" aria-label="عرض وحدات برج N" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج N</div></button>
+                <button class="hotspot hotspot--progress" type="button" data-tower="building-h" data-tower-key="H" style="top:68%;right:78%" aria-label="عرض وحدات برج H" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج H</div></button>
+                <button class="hotspot hotspot--elite hotspot--soon" type="button" data-tower="building-z" data-tower-key="Z" style="top:14%;right:54%" aria-label="عرض وحدات برج Z" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج Z — بنتهاوس</div></button>
+              </div>
+            </div>
+          </div>
+          <div class="mp-legend">
+            <span><i class="mp-dot mp-dot--done"></i>مكتمل</span>
+            <span><i class="mp-dot mp-dot--prog"></i>قيد الإنشاء</span>
+            <span><i class="mp-dot mp-dot--soon"></i>قريباً</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="map-sidebar">
+      <h2 class="sec-title" id="mapListTitle" style="font-size:18px;margin-bottom:16px">كل الوحدات</h2>
+      <div class="map-sidebar__search">
+        <input type="text" id="mapSearchInput" placeholder="ابحث باسم الوحدة...">
+      </div>
+      <div class="map-sidebar__list" id="mapUnitsList"></div>
+      <div class="empty-state" id="mapListEmpty" style="display:none">
+        <p>لا توجد وحدات في هذا البرج حاليًا.</p>
+      </div>
+    </aside>
   </div>
-</div>
 
-<nav class="bottom-nav">
-  <a href="index.html" data-nav="home"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
-  <a href="properties.html" data-nav="explore"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>Explore</a>
-  <a href="saved.html" data-nav="saved"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>Saved</a>
-  <a href="messages.html" data-nav="messages"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Messages</a>
-  <a href="profile.html" data-nav="profile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a>
-</nav>
+  <!-- ============ خريطة حقيقية للموقع ============ -->
+  <section class="section real-map-section">
+    <div class="container">
+      <div class="section-header" data-reveal="">
+        <span class="eyebrow">الموقع الجغرافي</span>
+        <h2 class="sec-title">العروبة سكوير على الخريطة</h2>
+        <p class="sec-subtitle">يقع المشروع في قلب التجمع الخامس بالقاهرة الجديدة، على مقربة من المحاور الرئيسية ومناطق الخدمات الحيوية.</p>
+      </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+      <div class="real-map-wrap" data-reveal="">
+        <div id="realMap"></div>
+        <div class="real-map-card">
+          <span class="real-map-card__badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            الموقع الرسمي
+          </span>
+          <h3>العروبة سكوير</h3>
+          <p>التجمع الخامس، القاهرة الجديدة، محافظة القاهرة، جمهورية مصر العربية</p>
+          <a id="directionsLink" href="#" target="_blank" rel="noopener" class="btn btn--outline btn-block mt-3">
+            الحصول على الاتجاهات
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="real-map-legend">
+        <span><i class="mp-dot" style="background:#B8874C;width:12px;height:12px"></i>مدخل المشروع الرئيسي</span>
+        <span><i class="mp-dot mp-dot--done"></i>برج مكتمل</span>
+        <span><i class="mp-dot mp-dot--prog"></i>برج قيد الإنشاء</span>
+        <span><i class="mp-dot mp-dot--soon"></i>برج قريباً</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <a href="index.html" class="site-footer__logo">العروبة <span>سكوير</span></a>
+    <ul class="site-footer__nav">
+      <li><a href="index.html#about">من نحن</a></li>
+      <li><a href="units.html">استكشف الوحدات</a></li>
+      <li><a href="map.html">مخطط الموقع</a></li>
+      <li><a href="saved.html">المحفوظات</a></li>
+      <li><a href="index.html#testimonials">آراء العملاء</a></li>
+      <li><a href="index.html#cta">تواصل معنا</a></li>
+    </ul>
+  </div>
+  <div class="site-footer__bottom">
+    © <span id="year"></span> العروبة مصر للتطوير العمراني. جميع الحقوق محفوظة.
+  </div>
+</footer>
+
+<script src="vendor/leaflet/leaflet.js"></script>
 <script src="js/main.js"></script>
-<script>
-  document.getElementById('locationPill').innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Kochi, Kerala';
-  document.getElementById('notifBtn').innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="dot"></span>';
-</script>
+<script src="js/platform.js"></script>
 </body>
 </html>

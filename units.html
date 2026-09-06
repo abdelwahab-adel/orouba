@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>استكشف الوحدات | العروبة سكوير</title>
+<meta name="description" content="تصفح الوحدات السكنية والتجارية المتاحة في العروبة سكوير — فلترة حسب البرج، النوع، عدد الغرف، والسعر.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23A8813C'/%3E%3Ctext x='12' y='17' font-size='13' fill='white' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700'%3Eع%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="units" data-view="grid">
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="site-header__logo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+      العروبة <span>سكوير</span>
+    </a>
+    <nav class="site-header__nav" id="site-nav">
+      <a href="index.html">الرئيسية</a>
+      <a href="index.html#about">من نحن</a>
+      <a href="units.html">استكشف الوحدات</a>
+      <a href="map.html">مخطط الموقع</a>
+      <a href="index.html#testimonials">آراء العملاء</a>
+      <a href="index.html#cta">تواصل معنا</a>
+    </nav>
+    <div class="site-header__actions">
+      <a href="saved.html" class="header-icon-btn" aria-label="المحفوظات">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="fav-count-badge">٠</span>
+      </a>
+    </div>
+    <button class="site-header__toggle" aria-label="فتح القائمة" aria-controls="site-nav">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">الرئيسية</a> <span>/</span> <span aria-current="page">استكشف الوحدات</span>
+      </div>
+      <h1 class="page-hero__title">استكشف وحدات العروبة سكوير</h1>
+      <p class="page-hero__subtitle">تصفح كل الوحدات المتاحة للبيع والإيجار عبر أبراج المشروع، وفلتر حسب احتياجاتك.</p>
+    </div>
+  </section>
+
+  <div class="container units-layout">
+    <aside class="filters-card" id="filtersCard">
+      <div style="display:flex;align-items:center">
+        <span class="filters-card__title">تصفية النتائج</span>
+        <button class="filters-close" id="filtersClose" aria-label="إغلاق الفلاتر">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="filter-group">
+        <label for="unitsSearch">البحث</label>
+        <input type="text" id="unitsSearch" placeholder="ابحث باسم الوحدة..." style="width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:14px;background:var(--cream);color:var(--ink)">
+      </div>
+
+      <div class="filter-group">
+        <label for="filterTower">البرج</label>
+        <select id="filterTower">
+          <option value="all">كل الأبراج</option>
+          <option value="K">برج K — التجمع الخامس</option>
+          <option value="T">برج T — القاهرة الجديدة</option>
+          <option value="N">برج N — التجمع الخامس</option>
+          <option value="S">برج S — القاهرة الجديدة</option>
+          <option value="H">برج H — حي النخبة</option>
+          <option value="Z">برج Z — حي النخبة</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="filterListing">نوع العرض</label>
+        <select id="filterListing">
+          <option value="all">بيع وإيجار</option>
+          <option value="sale">للبيع</option>
+          <option value="rent">للإيجار</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="filterType">نوع الوحدة</label>
+        <select id="filterType">
+          <option value="all">كل الأنواع</option>
+          <option value="شقة سكنية">شقة سكنية</option>
+          <option value="وحدة تجارية سكنية">وحدة تجارية سكنية</option>
+          <option value="وحدة ذكية">وحدة ذكية</option>
+          <option value="دوبلكس فاخر">دوبلكس فاخر</option>
+          <option value="بنتهاوس">بنتهاوس</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="filterBeds">عدد الغرف</label>
+        <select id="filterBeds">
+          <option value="any">أي عدد</option>
+          <option value="2">غرفتان فأكثر</option>
+          <option value="3">٣ غرف فأكثر</option>
+          <option value="4">٤ غرف فأكثر</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>نطاق السعر (للبيع)</label>
+        <div class="range-slider" id="priceRange">
+          <div class="track"></div>
+          <div class="fill" id="priceFill"></div>
+          <input type="range" class="range-min" id="priceMin" min="3000000" max="20000000" step="100000" value="3000000">
+          <input type="range" class="range-max" id="priceMax" min="3000000" max="20000000" step="100000" value="20000000">
+        </div>
+        <div class="range-values">
+          <span id="priceLabelMin">٣٬٠٠٠٬٠٠٠ ج.م</span>
+          <span id="priceLabelMax">٢٠٬٠٠٠٬٠٠٠ ج.م</span>
+        </div>
+      </div>
+    </aside>
+
+    <div>
+      <div class="units-toolbar">
+        <span class="results-count" id="resultsCount">— وحدة متاحة</span>
+        <div class="view-toggle">
+          <button id="viewGrid" class="is-active" aria-label="عرض شبكي">
+            <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </button>
+          <button id="viewList" aria-label="عرض قائمة">
+            <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="units-grid" id="unitsGrid"></div>
+      <div class="empty-state" id="unitsEmpty" style="display:none">
+        <div class="es-icon">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3 class="sec-title" style="font-size:19px">لا توجد وحدات مطابقة</h3>
+        <p>جرّب تعديل الفلاتر أو توسيع نطاق البحث.</p>
+      </div>
+
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </div>
+</main>
+
+<button class="filters-fab" id="filtersFab">
+  <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/></svg>
+  الفلاتر
+</button>
+<div class="filters-backdrop" id="filtersBackdrop"></div>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <a href="index.html" class="site-footer__logo">العروبة <span>سكوير</span></a>
+    <ul class="site-footer__nav">
+      <li><a href="index.html#about">من نحن</a></li>
+      <li><a href="units.html">استكشف الوحدات</a></li>
+      <li><a href="map.html">مخطط الموقع</a></li>
+      <li><a href="saved.html">المحفوظات</a></li>
+      <li><a href="index.html#testimonials">آراء العملاء</a></li>
+      <li><a href="index.html#cta">تواصل معنا</a></li>
+    </ul>
+  </div>
+  <div class="site-footer__bottom">
+    © <span id="year"></span> العروبة مصر للتطوير العمراني. جميع الحقوق محفوظة.
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/platform.js"></script>
+</body>
+</html>
