@@ -7,8 +7,8 @@
 <meta name="description" content="استكشف مخطط العروبة سكوير التفاعلي وتصفح الوحدات المتاحة في كل برج.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23A8813C'/%3E%3Ctext x='12' y='17' font-size='13' fill='white' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700'%3Eع%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23B8874C'/%3E%3Ctext x='12' y='17' font-size='13' fill='white' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700'%3Eع%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -80,6 +80,7 @@
                 <button class="hotspot hotspot--progress" type="button" data-tower="building-s" data-tower-key="S" style="top:48%;right:50%" aria-label="عرض وحدات برج S" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج S</div></button>
                 <button class="hotspot hotspot--progress" type="button" data-tower="building-n" data-tower-key="N" style="top:62%;right:22%" aria-label="عرض وحدات برج N" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج N</div></button>
                 <button class="hotspot hotspot--progress" type="button" data-tower="building-h" data-tower-key="H" style="top:68%;right:78%" aria-label="عرض وحدات برج H" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج H</div></button>
+                <button class="hotspot hotspot--soon" type="button" data-tower="building-u" data-tower-key="U" style="top:80%;right:45%" aria-label="عرض وحدات برج U" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج U</div></button>
                 <button class="hotspot hotspot--elite hotspot--soon" type="button" data-tower="building-z" data-tower-key="Z" style="top:14%;right:54%" aria-label="عرض وحدات برج Z" aria-haspopup="dialog"><span class="hotspot__pin"></span><div class="hotspot__tooltip">برج Z — بنتهاوس</div></button>
               </div>
             </div>
@@ -142,18 +143,36 @@
 
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <a href="index.html" class="site-footer__logo">العروبة <span>سكوير</span></a>
-    <ul class="site-footer__nav">
-      <li><a href="index.html#about">من نحن</a></li>
-      <li><a href="units.html">استكشف الوحدات</a></li>
-      <li><a href="map.html">مخطط الموقع</a></li>
-      <li><a href="saved.html">المحفوظات</a></li>
-      <li><a href="index.html#testimonials">آراء العملاء</a></li>
-      <li><a href="index.html#cta">تواصل معنا</a></li>
-    </ul>
+    <div class="site-footer__brand">
+      <a href="index.html" class="site-footer__logo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+        العروبة <span>سكوير</span>
+      </a>
+      <p class="site-footer__tagline">كومباوند سكني وتجاري فاخر من العروبة مصر للتطوير العمراني، يجمع بين الفخامة والراحة والاطمئنان في قلب القاهرة الجديدة.</p>
+    </div>
+    <div class="site-footer__col">
+      <h4>استكشف</h4>
+      <a href="units.html">كل الوحدات</a>
+      <a href="units.html?listing=sale">للبيع</a>
+      <a href="units.html?listing=rent">للإيجار</a>
+      <a href="map.html">خريطة الموقع</a>
+    </div>
+    <div class="site-footer__col">
+      <h4>حسابي</h4>
+      <a href="saved.html">المحفوظات</a>
+      <a href="schedule-visit.html">حجز معاينة</a>
+    </div>
+    <div class="site-footer__col">
+      <h4>الشركة</h4>
+      <a href="index.html#about">من نحن</a>
+      <a href="index.html#services">خدماتنا</a>
+      <a href="index.html#testimonials">آراء العملاء</a>
+      <a href="index.html#cta">تواصل معنا</a>
+    </div>
   </div>
   <div class="site-footer__bottom">
-    © <span id="year"></span> العروبة مصر للتطوير العمراني. جميع الحقوق محفوظة.
+    <span>© <span id="year"></span> العروبة مصر للتطوير العمراني. جميع الحقوق محفوظة.</span>
+    <span>التجمع الخامس، القاهرة الجديدة</span>
   </div>
 </footer>
 

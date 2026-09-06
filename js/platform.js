@@ -87,7 +87,8 @@
     Z: { name: "برج Z", location: "حي النخبة", status: "قريباً", cover: IMG.z },
     N: { name: "برج N", location: "التجمع الخامس", status: "قيد الإنشاء", cover: IMG.n },
     S: { name: "برج S", location: "القاهرة الجديدة", status: "قيد الإنشاء", cover: IMG.s },
-    H: { name: "برج H", location: "حي النخبة", status: "قيد الإنشاء", cover: IMG.h }
+    H: { name: "برج H", location: "حي النخبة", status: "قيد الإنشاء", cover: IMG.h },
+    U: { name: "برج U", location: "التجمع الخامس", status: "قريباً", cover: IMG.k }
   };
 
   /* ---------------- المرافق ---------------- */
@@ -204,8 +205,28 @@
     return UNITS.find(function (u) { return u.slug === slug; });
   }
 
-  /* ---------------- المفضلة (تخزين مؤقت في الذاكرة) ---------------- */
-  var FAVORITES = new Set();
+  /* ---------------- المفضلة (تخزين دائم عبر localStorage) ---------------- */
+  var FAVORITES_KEY = "orouba_square_favorites";
+
+  function loadFavorites() {
+    try {
+      var raw = window.localStorage.getItem(FAVORITES_KEY);
+      var arr = raw ? JSON.parse(raw) : [];
+      return new Set(Array.isArray(arr) ? arr : []);
+    } catch (e) {
+      return new Set();
+    }
+  }
+
+  function persistFavorites() {
+    try {
+      window.localStorage.setItem(FAVORITES_KEY, JSON.stringify(Array.from(FAVORITES)));
+    } catch (e) {
+      /* التخزين المحلي غير متاح (خصوصية متصفح، إلخ) — المفضلة تبقى شغّالة لجلسة الصفحة الحالية فقط */
+    }
+  }
+
+  var FAVORITES = loadFavorites();
 
   function markFavorites(scope) {
     var root = scope || document;
@@ -245,6 +266,7 @@
           }
         }
       }
+      persistFavorites();
       document.querySelectorAll('[data-fav="' + slug + '"]').forEach(function (b) {
         b.classList.toggle("is-fav", FAVORITES.has(slug));
       });
@@ -332,8 +354,13 @@
   /* =========================================================
      صفحة: units.html
      ========================================================= */
-  var FILTER = { q: "", tower: "all", listing: "all", type: "all", beds: "any", priceMin: 3000000, priceMax: 20000000 };
+  var FILTER = { q: "", tower: "all", listing: "all", type: "all", beds: "any", baths: "any", furnishing: "any", sort: "newest", priceMin: 3000000, priceMax: 20000000 };
   var PAGE = 1, PAGE_SIZE = 6;
+  var FURNISHING_GROUPS = {
+    full: ["تشطيب كامل", "تشطيب كامل فاخر"],
+    half: ["نصف تشطيب", "على الطوب الأحمر"],
+    furnished: ["مفروشة بالكامل"]
+  };
 
   function applyFilters() {
     var list = UNITS.filter(function (u) {
@@ -345,13 +372,22 @@
       if (FILTER.listing !== "all" && u.listing !== FILTER.listing) return false;
       if (FILTER.type !== "all" && u.unitType !== FILTER.type) return false;
       if (FILTER.beds !== "any") {
-        var bMin = +FILTER.beds;
-        if (FILTER.beds === "4" ? u.beds < 4 : u.beds !== bMin) return false;
+        if (FILTER.beds === "4" ? u.beds < 4 : u.beds !== +FILTER.beds) return false;
+      }
+      if (FILTER.baths !== "any") {
+        if (FILTER.baths === "4" ? u.baths < 4 : u.baths !== +FILTER.baths) return false;
+      }
+      if (FILTER.furnishing !== "any") {
+        var group = FURNISHING_GROUPS[FILTER.furnishing] || [];
+        if (group.indexOf(u.furnishing) === -1) return false;
       }
       if (u.listing === "sale" && (u.price < FILTER.priceMin || u.price > FILTER.priceMax)) return false;
       return true;
     });
-    list.sort(function (a, b) { return a.daysAgo - b.daysAgo; });
+    if (FILTER.sort === "price-asc") list.sort(function (a, b) { return a.price - b.price; });
+    else if (FILTER.sort === "price-desc") list.sort(function (a, b) { return b.price - a.price; });
+    else if (FILTER.sort === "rating") list.sort(function (a, b) { return b.rating - a.rating; });
+    else list.sort(function (a, b) { return a.daysAgo - b.daysAgo; });
     return list;
   }
 
@@ -409,14 +445,115 @@
     bindSelect("filterTower", "tower");
     bindSelect("filterListing", "listing");
     bindSelect("filterType", "type");
-    bindSelect("filterBeds", "beds");
 
     function bindSelect(id, key) {
       var el = document.getElementById(id);
       if (!el) return;
       el.value = FILTER[key];
-      el.addEventListener("change", function () { FILTER[key] = el.value; PAGE = 1; renderUnitsPage(); });
+      el.addEventListener("change", function () { FILTER[key] = el.value; PAGE = 1; syncFilterControls(); renderUnitsPage(); });
     }
+
+    /* أزرار pill-toggle (الغرف / الحمامات / التشطيب) */
+    function bindPillGroup(containerId, dataAttr, key) {
+      var wrap = document.getElementById(containerId);
+      if (!wrap) return;
+      wrap.querySelectorAll(".pill-toggle").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          FILTER[key] = btn.getAttribute(dataAttr);
+          PAGE = 1;
+          syncFilterControls();
+          renderUnitsPage();
+        });
+      });
+    }
+    bindPillGroup("bedsToggle", "data-beds", "beds");
+    bindPillGroup("bathsToggle", "data-baths", "baths");
+    bindPillGroup("furnishingToggle", "data-furnishing", "furnishing");
+
+    /* التبديل السريع (الكل/بيع/إيجار) وشرائح النوع فوق النتائج — نفس FILTER بالضبط */
+    var listingSeg = document.getElementById("listingSeg");
+    if (listingSeg) {
+      listingSeg.querySelectorAll("[data-listing-tab]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          FILTER.listing = btn.getAttribute("data-listing-tab");
+          PAGE = 1;
+          syncFilterControls();
+          renderUnitsPage();
+        });
+      });
+    }
+    var typeChips = document.getElementById("typeChips");
+    if (typeChips) {
+      typeChips.querySelectorAll("[data-type-tab]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          FILTER.type = btn.getAttribute("data-type-tab");
+          PAGE = 1;
+          syncFilterControls();
+          renderUnitsPage();
+        });
+      });
+    }
+
+    var sortSelect = document.getElementById("sortSelect");
+    if (sortSelect) {
+      sortSelect.value = FILTER.sort;
+      sortSelect.addEventListener("change", function () { FILTER.sort = sortSelect.value; renderUnitsPage(); });
+    }
+
+    /* تحدّث كل عناصر الفلترة (قوائم، شرائح، أزرار) لتعكس FILTER الحالي، أيًا كان مصدر التغيير */
+    function syncFilterControls() {
+      var towerEl = document.getElementById("filterTower"); if (towerEl) towerEl.value = FILTER.tower;
+      var listingEl = document.getElementById("filterListing"); if (listingEl) listingEl.value = FILTER.listing;
+      var typeEl = document.getElementById("filterType"); if (typeEl) typeEl.value = FILTER.type;
+      if (listingSeg) {
+        listingSeg.querySelectorAll("[data-listing-tab]").forEach(function (b) {
+          b.classList.toggle("is-active", b.getAttribute("data-listing-tab") === FILTER.listing);
+        });
+      }
+      if (typeChips) {
+        typeChips.querySelectorAll("[data-type-tab]").forEach(function (b) {
+          b.classList.toggle("is-active", b.getAttribute("data-type-tab") === FILTER.type);
+        });
+      }
+      ["bedsToggle", "bathsToggle", "furnishingToggle"].forEach(function (id) {
+        var wrap = document.getElementById(id);
+        if (!wrap) return;
+        var key = id === "bedsToggle" ? "beds" : id === "bathsToggle" ? "baths" : "furnishing";
+        var attr = id === "bedsToggle" ? "data-beds" : id === "bathsToggle" ? "data-baths" : "data-furnishing";
+        wrap.querySelectorAll(".pill-toggle").forEach(function (b) {
+          b.classList.toggle("is-active", b.getAttribute(attr) === FILTER[key]);
+        });
+      });
+    }
+    syncFilterControls();
+
+    /* مسح كل الفلاتر */
+    function clearAllFilters() {
+      FILTER.q = "";
+      FILTER.tower = "all";
+      FILTER.listing = "all";
+      FILTER.type = "all";
+      FILTER.beds = "any";
+      FILTER.baths = "any";
+      FILTER.furnishing = "any";
+      FILTER.sort = "newest";
+      FILTER.priceMin = 3000000;
+      FILTER.priceMax = 20000000;
+      PAGE = 1;
+      if (searchInput) searchInput.value = "";
+      if (sortSelect) sortSelect.value = "newest";
+      if (priceMinInput && priceMaxInput) {
+        priceMinInput.value = 3000000;
+        priceMaxInput.value = 20000000;
+        priceMinInput.dispatchEvent(new Event("input"));
+      }
+      syncFilterControls();
+      renderUnitsPage();
+    }
+    var clearBtn = document.getElementById("clearFilters");
+    if (clearBtn) clearBtn.addEventListener("click", clearAllFilters);
+    var resetFromEmpty = document.getElementById("resetFromEmpty");
+    if (resetFromEmpty) resetFromEmpty.addEventListener("click", clearAllFilters);
 
     var priceMinInput = document.getElementById("priceMin");
     var priceMaxInput = document.getElementById("priceMax");
@@ -652,6 +789,7 @@
     S: { lat: 30.0289, lng: 31.4907, status: "progress" },
     N: { lat: 30.0273, lng: 31.4920, status: "progress" },
     H: { lat: 30.0269, lng: 31.4888, status: "progress" },
+    U: { lat: 30.0295, lng: 31.4930, status: "soon" },
     Z: { lat: 30.0315, lng: 31.4908, status: "soon" }
   };
   var TOWER_STATUS_COLOR = { done: "#3F7D58", progress: "#B8874C", soon: "#9A968B" };

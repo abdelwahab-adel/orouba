@@ -7,8 +7,8 @@
 <meta name="description" content="تصفح الوحدات السكنية والتجارية المتاحة في العروبة سكوير — فلترة حسب البرج، النوع، عدد الغرف، والسعر.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23A8813C'/%3E%3Ctext x='12' y='17' font-size='13' fill='white' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700'%3Eع%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23B8874C'/%3E%3Ctext x='12' y='17' font-size='13' fill='white' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700'%3Eع%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="units" data-view="grid">
@@ -50,13 +50,34 @@
     </div>
   </section>
 
+  <div class="container">
+    <div class="quick-filters">
+      <div class="seg" id="listingSeg">
+        <button data-listing-tab="all" class="is-active">الكل</button>
+        <button data-listing-tab="sale">للبيع</button>
+        <button data-listing-tab="rent">للإيجار</button>
+      </div>
+      <div class="chip-row" id="typeChips">
+        <button class="chip is-active" data-type-tab="all">كل الأنواع</button>
+        <button class="chip" data-type-tab="شقة سكنية">شقة سكنية</button>
+        <button class="chip" data-type-tab="وحدة تجارية سكنية">تجارية سكنية</button>
+        <button class="chip" data-type-tab="وحدة ذكية">ذكية</button>
+        <button class="chip" data-type-tab="دوبلكس فاخر">دوبلكس</button>
+        <button class="chip" data-type-tab="بنتهاوس">بنتهاوس</button>
+      </div>
+    </div>
+  </div>
+
   <div class="container units-layout">
     <aside class="filters-card" id="filtersCard">
-      <div style="display:flex;align-items:center">
+      <div class="filters-card__head">
         <span class="filters-card__title">تصفية النتائج</span>
-        <button class="filters-close" id="filtersClose" aria-label="إغلاق الفلاتر">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
+        <div class="filters-card__head-actions">
+          <button class="filters-clear" id="clearFilters">مسح الكل</button>
+          <button class="filters-close" id="filtersClose" aria-label="إغلاق الفلاتر">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
       </div>
 
       <div class="filter-group">
@@ -73,6 +94,7 @@
           <option value="N">برج N — التجمع الخامس</option>
           <option value="S">برج S — القاهرة الجديدة</option>
           <option value="H">برج H — حي النخبة</option>
+          <option value="U">برج U — التجمع الخامس (قريباً)</option>
           <option value="Z">برج Z — حي النخبة</option>
         </select>
       </div>
@@ -99,13 +121,33 @@
       </div>
 
       <div class="filter-group">
-        <label for="filterBeds">عدد الغرف</label>
-        <select id="filterBeds">
-          <option value="any">أي عدد</option>
-          <option value="2">غرفتان فأكثر</option>
-          <option value="3">٣ غرف فأكثر</option>
-          <option value="4">٤ غرف فأكثر</option>
-        </select>
+        <h4 class="filter-group__label">عدد الغرف</h4>
+        <div class="pill-toggle-row" id="bedsToggle">
+          <button class="pill-toggle is-active" data-beds="any">أي عدد</button>
+          <button class="pill-toggle" data-beds="2">غرفتان</button>
+          <button class="pill-toggle" data-beds="3">٣ غرف</button>
+          <button class="pill-toggle" data-beds="4">٤+ غرف</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <h4 class="filter-group__label">الحمامات</h4>
+        <div class="pill-toggle-row" id="bathsToggle">
+          <button class="pill-toggle is-active" data-baths="any">أي عدد</button>
+          <button class="pill-toggle" data-baths="2">٢</button>
+          <button class="pill-toggle" data-baths="3">٣</button>
+          <button class="pill-toggle" data-baths="4">٤+</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <h4 class="filter-group__label">التشطيب</h4>
+        <div class="pill-toggle-row" id="furnishingToggle">
+          <button class="pill-toggle is-active" data-furnishing="any">الكل</button>
+          <button class="pill-toggle" data-furnishing="full">تشطيب كامل</button>
+          <button class="pill-toggle" data-furnishing="half">نصف تشطيب</button>
+          <button class="pill-toggle" data-furnishing="furnished">مفروشة</button>
+        </div>
       </div>
 
       <div class="filter-group">
@@ -121,18 +163,28 @@
           <span id="priceLabelMax">٢٠٬٠٠٠٬٠٠٠ ج.م</span>
         </div>
       </div>
+
+      <button class="btn btn--gold btn-block filters-apply-mobile" id="filtersApplyMobile">تطبيق الفلاتر</button>
     </aside>
 
     <div>
       <div class="units-toolbar">
         <span class="results-count" id="resultsCount">— وحدة متاحة</span>
-        <div class="view-toggle">
-          <button id="viewGrid" class="is-active" aria-label="عرض شبكي">
-            <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-          </button>
-          <button id="viewList" aria-label="عرض قائمة">
-            <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-          </button>
+        <div class="units-toolbar__right">
+          <select id="sortSelect" class="sort-select">
+            <option value="newest">الأحدث أولاً</option>
+            <option value="price-asc">السعر: من الأقل للأعلى</option>
+            <option value="price-desc">السعر: من الأعلى للأقل</option>
+            <option value="rating">الأعلى تقييمًا</option>
+          </select>
+          <div class="view-toggle">
+            <button id="viewGrid" class="is-active" aria-label="عرض شبكي">
+              <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </button>
+            <button id="viewList" aria-label="عرض قائمة">
+              <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -143,6 +195,7 @@
         </div>
         <h3 class="sec-title" style="font-size:19px">لا توجد وحدات مطابقة</h3>
         <p>جرّب تعديل الفلاتر أو توسيع نطاق البحث.</p>
+        <button class="btn btn--gold" id="resetFromEmpty">مسح الفلاتر</button>
       </div>
 
       <div class="pagination" id="pagination"></div>
@@ -158,18 +211,36 @@
 
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <a href="index.html" class="site-footer__logo">العروبة <span>سكوير</span></a>
-    <ul class="site-footer__nav">
-      <li><a href="index.html#about">من نحن</a></li>
-      <li><a href="units.html">استكشف الوحدات</a></li>
-      <li><a href="map.html">مخطط الموقع</a></li>
-      <li><a href="saved.html">المحفوظات</a></li>
-      <li><a href="index.html#testimonials">آراء العملاء</a></li>
-      <li><a href="index.html#cta">تواصل معنا</a></li>
-    </ul>
+    <div class="site-footer__brand">
+      <a href="index.html" class="site-footer__logo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+        العروبة <span>سكوير</span>
+      </a>
+      <p class="site-footer__tagline">كومباوند سكني وتجاري فاخر من العروبة مصر للتطوير العمراني، يجمع بين الفخامة والراحة والاطمئنان في قلب القاهرة الجديدة.</p>
+    </div>
+    <div class="site-footer__col">
+      <h4>استكشف</h4>
+      <a href="units.html">كل الوحدات</a>
+      <a href="units.html?listing=sale">للبيع</a>
+      <a href="units.html?listing=rent">للإيجار</a>
+      <a href="map.html">خريطة الموقع</a>
+    </div>
+    <div class="site-footer__col">
+      <h4>حسابي</h4>
+      <a href="saved.html">المحفوظات</a>
+      <a href="schedule-visit.html">حجز معاينة</a>
+    </div>
+    <div class="site-footer__col">
+      <h4>الشركة</h4>
+      <a href="index.html#about">من نحن</a>
+      <a href="index.html#services">خدماتنا</a>
+      <a href="index.html#testimonials">آراء العملاء</a>
+      <a href="index.html#cta">تواصل معنا</a>
+    </div>
   </div>
   <div class="site-footer__bottom">
-    © <span id="year"></span> العروبة مصر للتطوير العمراني. جميع الحقوق محفوظة.
+    <span>© <span id="year"></span> العروبة مصر للتطوير العمراني. جميع الحقوق محفوظة.</span>
+    <span>التجمع الخامس، القاهرة الجديدة</span>
   </div>
 </footer>
 
