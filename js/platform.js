@@ -438,9 +438,21 @@
     if (params.get("q")) FILTER.q = params.get("q");
 
     var searchInput = document.getElementById("unitsSearch");
+    var topSearchInput = document.getElementById("unitsTopSearch");
+    function setSearch(value) {
+      FILTER.q = value.trim();
+      if (searchInput && searchInput.value !== value) searchInput.value = value;
+      if (topSearchInput && topSearchInput.value !== value) topSearchInput.value = value;
+      PAGE = 1;
+      renderUnitsPage();
+    }
     if (searchInput) {
       searchInput.value = FILTER.q;
-      searchInput.addEventListener("input", function () { FILTER.q = searchInput.value.trim(); PAGE = 1; renderUnitsPage(); });
+      searchInput.addEventListener("input", function () { setSearch(searchInput.value); });
+    }
+    if (topSearchInput) {
+      topSearchInput.value = FILTER.q;
+      topSearchInput.addEventListener("input", function () { setSearch(topSearchInput.value); });
     }
     bindSelect("filterTower", "tower");
     bindSelect("filterListing", "listing");
@@ -541,6 +553,7 @@
       FILTER.priceMax = 20000000;
       PAGE = 1;
       if (searchInput) searchInput.value = "";
+      if (topSearchInput) topSearchInput.value = "";
       if (sortSelect) sortSelect.value = "newest";
       if (priceMinInput && priceMaxInput) {
         priceMinInput.value = 3000000;
@@ -673,6 +686,10 @@
     setText("udAgentEmail", u.agent.email);
     var callBtn = document.getElementById("udAgentCallBtn");
     if (callBtn) callBtn.setAttribute("href", "tel:" + u.agent.phone.replace(/\s+/g, ""));
+    var phoneLink = document.getElementById("udAgentPhoneLink");
+    if (phoneLink) phoneLink.setAttribute("href", "tel:" + u.agent.phone.replace(/\s+/g, ""));
+    var emailLink = document.getElementById("udAgentEmailLink");
+    if (emailLink) emailLink.setAttribute("href", "mailto:" + u.agent.email);
     document.querySelectorAll("[data-schedule-link]").forEach(function (a) { a.setAttribute("href", "schedule-visit.html?u=" + u.slug); });
     document.querySelectorAll("[data-map-link]").forEach(function (a) { a.setAttribute("href", "map.html?tower=" + u.tower); });
 
@@ -881,7 +898,8 @@
     if (!listEl) return;
 
     var params = new URLSearchParams(window.location.search);
-    var activeTower = params.get("tower") || "all";
+    var requestedTower = params.get("tower") || "all";
+    var activeTower = (requestedTower === "all" || TOWERS[requestedTower]) ? requestedTower : "all";
 
     function renderList() {
       var list = activeTower === "all" ? UNITS : UNITS.filter(function (u) { return u.tower === activeTower; });
@@ -892,7 +910,7 @@
       var emptyEl = document.getElementById("mapListEmpty");
       if (emptyEl) emptyEl.style.display = list.length ? "none" : "block";
       var titleEl = document.getElementById("mapListTitle");
-      if (titleEl) titleEl.textContent = activeTower === "all" ? "كل الوحدات" : TOWERS[activeTower].name + " — الوحدات المتاحة";
+      if (titleEl) titleEl.textContent = (activeTower === "all" || !TOWERS[activeTower]) ? "كل الوحدات" : TOWERS[activeTower].name + " — الوحدات المتاحة";
     }
     renderList();
 
@@ -948,6 +966,10 @@
     setText("svAgentRole", u.agent.role);
     setText("svAgentPhone", u.agent.phone);
     setText("svAgentEmail", u.agent.email);
+    var svPhoneLink = document.getElementById("svAgentPhoneLink");
+    if (svPhoneLink) svPhoneLink.setAttribute("href", "tel:" + u.agent.phone.replace(/\s+/g, ""));
+    var svEmailLink = document.getElementById("svAgentEmailLink");
+    if (svEmailLink) svEmailLink.setAttribute("href", "mailto:" + u.agent.email);
 
     var days = ["أحد", "اثنين", "ثلاثاء", "أربعاء", "خميس", "جمعة", "سبت"];
     var months = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
@@ -1080,19 +1102,29 @@
   /* =========================================================
      تشغيل عام على كل صفحات المنصة
      ========================================================= */
+  /* تشغيل كل دالة صفحة بمعزل عن الباقي — خطأ غير متوقع في دالة واحدة
+     (بسبب رابط مشوّه، أو خطأ برمجي مستقبلي) ميوقفش بقية دوال الصفحة */
+  function safeRun(fn, label) {
+    try {
+      fn();
+    } catch (e) {
+      if (window.console && console.error) console.error("خطأ في " + label + ":", e);
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
-    initFavoriteDelegation();
-    initHero();
-    initCategoryCounts();
-    initUnitsPage();
-    initUnitDetailsPage();
-    initSavedPage();
-    initUnitsMapPage();
-    initRealMap();
-    initScheduleVisitPage();
-    initLightbox();
-    markFavorites(document);
-    updateFavBadge();
+    safeRun(initFavoriteDelegation, "initFavoriteDelegation");
+    safeRun(initHero, "initHero");
+    safeRun(initCategoryCounts, "initCategoryCounts");
+    safeRun(initUnitsPage, "initUnitsPage");
+    safeRun(initUnitDetailsPage, "initUnitDetailsPage");
+    safeRun(initSavedPage, "initSavedPage");
+    safeRun(initUnitsMapPage, "initUnitsMapPage");
+    safeRun(initRealMap, "initRealMap");
+    safeRun(initScheduleVisitPage, "initScheduleVisitPage");
+    safeRun(initLightbox, "initLightbox");
+    safeRun(function () { markFavorites(document); }, "markFavorites");
+    safeRun(updateFavBadge, "updateFavBadge");
   });
 
   /* واجهة عامة صغيرة للاستخدام من main.js أو الصفحات */

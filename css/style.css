@@ -8,7 +8,7 @@
   --ink-soft:   #3A3B40;
   --muted:      #79756B;
   --muted-2:    #9A968B;
-  --cream:      #ffffff;
+  --cream:      #FBF9F5;
   --surface:    #FFFFFF;
   --line:       #E8E3D8;
   --line-strong:#D8D2C2;
@@ -1126,6 +1126,25 @@ button:focus-visible,
   padding:22px;
   position:sticky; top:104px;
 }
+.units-search-row{
+  display:flex; align-items:center; gap:14px;
+  padding-top:28px;
+}
+.units-search-bar{ flex:1; box-shadow:var(--shadow-sm); }
+.units-map-btn{
+  flex-shrink:0;
+  background:var(--surface); color:var(--ink);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-sm);
+  white-space:nowrap;
+}
+.units-map-btn:hover{ border-color:var(--line-strong); background:var(--cream); }
+@media (max-width:640px){
+  .units-search-row{ flex-wrap:wrap; }
+  .units-search-bar{ flex-basis:100%; }
+  .units-map-btn{ flex:1; justify-content:center; }
+}
+
 .quick-filters{
   display:flex; align-items:center; justify-content:space-between; gap:16px;
   flex-wrap:wrap;
@@ -1413,6 +1432,9 @@ table.info-table td:last-child{ font-weight:700; }
 .agent-card__contact{ display:flex; flex-direction:column; gap:10px; margin-bottom:18px; }
 .agent-contact-row{ display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--ink-soft); }
 .agent-contact-row svg{ color:var(--muted); flex-shrink:0; }
+.agent-contact-row--link{ transition:color .2s; }
+.agent-contact-row--link:hover{ color:var(--ink); }
+.agent-contact-row--link:hover svg{ color:var(--ink); }
 
 @media (max-width:900px){ .ud-layout{ grid-template-columns:1fr; } .agent-card{ position:static; } }
 

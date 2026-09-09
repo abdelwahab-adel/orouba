@@ -6,17 +6,25 @@
 
   var REDUCE_MOTION = typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  function safeRun(fn, label) {
+    try {
+      fn();
+    } catch (e) {
+      if (window.console && console.error) console.error("خطأ في " + label + ":", e);
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
-    initImageFallbacks();
-    initHeaderNav();
-    initHeroHeaderState();
-    initReveal();
-    initCounters();
-    initSlider("#facsl", "#sl-r, #sl-rm", "#sl-l, #sl-lm");
-    initTestimonials();
-    initMasterplan();
-    initServiceDialogs();
-    initFooterYear();
+    safeRun(initImageFallbacks, "initImageFallbacks");
+    safeRun(initHeaderNav, "initHeaderNav");
+    safeRun(initHeroHeaderState, "initHeroHeaderState");
+    safeRun(initReveal, "initReveal");
+    safeRun(initCounters, "initCounters");
+    safeRun(function () { initSlider("#facsl", "#sl-r, #sl-rm", "#sl-l, #sl-lm"); }, "initSlider");
+    safeRun(initTestimonials, "initTestimonials");
+    safeRun(initMasterplan, "initMasterplan");
+    safeRun(initServiceDialogs, "initServiceDialogs");
+    safeRun(initFooterYear, "initFooterYear");
   });
 
   /* ---------- fallback الصور المحلية المفقودة ---------- */
