@@ -102,9 +102,12 @@
   };
 
   /* ---------------- مستشارو المبيعات ---------------- */
+  var COMPANY_PHONE = "+20 10 68300432";
+  var COMPANY_WHATSAPP = "201068300432"; /* بصيغة wa.me: كود الدولة بدون + وبدون صفر البداية */
+
   var CONSULTANTS = {
-    ahmed: { name: "أحمد الجوهري", role: "كبير مستشاري المبيعات", phone: "+20 100 123 4567", email: "ahmed.gawhary@orouba-egypt.com", avatar: IMG.consultantM },
-    mona: { name: "منى فتحي", role: "مستشارة مبيعات", phone: "+20 122 987 6543", email: "mona.fathy@orouba-egypt.com", avatar: IMG.consultantF }
+    ahmed: { name: "أحمد الجوهري", role: "كبير مستشاري المبيعات", phone: COMPANY_PHONE, email: "ahmed.gawhary@orouba-egypt.com", avatar: IMG.consultantM },
+    mona: { name: "منى فتحي", role: "مستشارة مبيعات", phone: COMPANY_PHONE, email: "mona.fathy@orouba-egypt.com", avatar: IMG.consultantF }
   };
 
   /* ---------------- الوحدات ---------------- */
@@ -648,9 +651,12 @@
     setText("udName", u.name);
     setHTML("udLocation", Icon("mapPin", { size: 14 }) + "<span>" + (TOWERS[u.tower] ? TOWERS[u.tower].location : "") + " · " + TOWERS[u.tower].name + "</span>");
     setHTML("udPrice", "<b>" + formatEGP(u.price) + "</b>" + (u.listing === "rent" ? "<span> / شهريًا</span>" : ""));
+    setHTML("udMobilePrice", formatEGP(u.price) + (u.listing === "rent" ? " / شهريًا" : ""));
     setHTML("udRating", Icon("star", { size: 14, fill: "currentColor" }) + u.rating.toFixed(1) + ' <span class="count">(' + ar(u.reviews) + " تقييم)</span>");
     var favBtn = document.getElementById("udFavBtn");
     if (favBtn) favBtn.setAttribute("data-fav", u.slug);
+    var favFloatBtn = document.getElementById("udFavFloatBtn");
+    if (favFloatBtn) favFloatBtn.setAttribute("data-fav", u.slug);
 
     setText("udBeds", ar(u.beds));
     setText("udBaths", ar(u.baths));
@@ -690,6 +696,11 @@
     if (phoneLink) phoneLink.setAttribute("href", "tel:" + u.agent.phone.replace(/\s+/g, ""));
     var emailLink = document.getElementById("udAgentEmailLink");
     if (emailLink) emailLink.setAttribute("href", "mailto:" + u.agent.email);
+    var waBtn = document.getElementById("udAgentWhatsappBtn");
+    if (waBtn) {
+      var waMsg = "مرحبًا، أنا مهتم بالاستفسار عن وحدة: " + u.name + " (" + TOWERS[u.tower].name + ")، هل ممكن معرفة المزيد من التفاصيل؟";
+      waBtn.setAttribute("href", "https://wa.me/" + COMPANY_WHATSAPP + "?text=" + encodeURIComponent(waMsg));
+    }
     document.querySelectorAll("[data-schedule-link]").forEach(function (a) { a.setAttribute("href", "schedule-visit.html?u=" + u.slug); });
     document.querySelectorAll("[data-map-link]").forEach(function (a) { a.setAttribute("href", "map.html?tower=" + u.tower); });
 
@@ -923,7 +934,7 @@
       var btn = document.querySelector('.hotspot[data-tower-key="' + key + '"]');
       if (btn) btn.classList.add("is-active");
       renderList();
-      listEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      if (listEl.scrollIntoView) listEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
     mapPageSelectTower = selectTower;
 
@@ -1007,6 +1018,30 @@
         btn.innerHTML = Icon("checkCircle", { size: 17 }) + " تم تأكيد الموعد";
         btn.disabled = true;
         showToast("تم تأكيد معاينتك لوحدة " + u.name);
+
+        function chipLabel(el) {
+          if (!el) return "—";
+          var spans = el.querySelectorAll("span");
+          if (!spans.length) return el.textContent.trim();
+          return Array.prototype.map.call(spans, function (s) { return s.textContent; }).join(" ");
+        }
+        var activeDateBtn = dateRow.querySelector(".date-chip.is-active");
+        var activeTimeBtn = timeRow ? timeRow.querySelector(".time-chip.is-active") : null;
+        var nameVal = (document.getElementById("svName") || {}).value || "—";
+        var phoneVal = (document.getElementById("svPhone") || {}).value || "—";
+
+        var waLines = [
+          "مرحبًا، أرغب في تأكيد حجز معاينة في العروبة سكوير.",
+          "الوحدة: " + u.name,
+          "البرج: " + TOWERS[u.tower].name + " — " + TOWERS[u.tower].location,
+          "التاريخ المطلوب: " + chipLabel(activeDateBtn),
+          "الوقت المطلوب: " + (activeTimeBtn ? activeTimeBtn.textContent.trim() : "—"),
+          "الاسم: " + nameVal,
+          "رقم الهاتف: " + phoneVal
+        ];
+        var waUrl = "https://wa.me/" + COMPANY_WHATSAPP + "?text=" + encodeURIComponent(waLines.join("\n"));
+        var waWin = window.open(waUrl, "_blank");
+        if (waWin) waWin.opener = null;
       });
     }
   }
